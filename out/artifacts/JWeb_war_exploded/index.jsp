@@ -12,7 +12,6 @@
   </head>
   <body>
     <h1>This is the index</h1>
-    <div class="button">TWEHWH</div>
     <a href="admin">Admin</a>
   </body>
 </html>

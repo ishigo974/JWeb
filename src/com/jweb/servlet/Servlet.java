@@ -22,7 +22,6 @@ public class Servlet extends HttpServlet {
         out.println("<head>");
         out.println("<meta charset=\"utf-8\" />");
         out.println("<title>Test</title>");
-        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"/style/foundation.css\" />");
         out.println("</head>");
         out.println("<body>");
         out.println("<div class=\"button\">Ceci est une page générée depuis une servlet.</div>");
