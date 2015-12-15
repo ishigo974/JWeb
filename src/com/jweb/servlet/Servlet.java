@@ -16,16 +16,6 @@ public class Servlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<meta charset=\"utf-8\" />");
-        out.println("<title>Test</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<div class=\"button\">Ceci est une page générée depuis une servlet.</div>");
-        out.println("</body>");
-        out.println("</html>");
+        this.getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
     }
 }
