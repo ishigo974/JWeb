@@ -24,5 +24,6 @@
 <a href="login">Login</a>
 <a href="signup">Sign up</a>
 <a href="admin">Admin</a>
+${sessionScope.userSession.email}
 </body>
 </html>

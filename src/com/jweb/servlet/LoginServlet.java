@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -18,6 +19,12 @@ public class LoginServlet extends HttpServlet {
         User user = form.loginUser(request);
         request.setAttribute("form", form);
         request.setAttribute("user", user);
+        HttpSession session = request.getSession();
+        if (form.getErrors().isEmpty()) {
+            session.setAttribute("userSession", user);
+        } else {
+            session.setAttribute("userSession", null);
+        }
         this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
