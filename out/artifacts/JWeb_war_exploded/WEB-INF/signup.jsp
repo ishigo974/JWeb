@@ -23,21 +23,29 @@
 
         <input type="email" id="email" name="email" value="<c:out value="${user.email}"/>" size="20"
                maxlength="60" placeholder="Email"/>
-        <%--<span class="error">${form.errors['email']}</span>--%>
+        <c:if test="${!empty form.errors['email']}">
+            <small class="error">${form.errors['email']}</small>
+        </c:if>
         <br/>
 
         <input type="password" id="password" name="password" size="20" maxlength="20" placeholder="Password"/>
-        <%--<span class="error">${form.errors['password']}</span>--%>
+        <c:if test="${!empty form.errors['password']}">
+            <small class="error">${form.errors['password']}</small>
+        </c:if>
         <br/>
 
         <input type="password" id="confirmation" name="confirmation" size="20" maxlength="20"
                placeholder="Password confirmation"/>
-        <%--<span class="error">${form.errors['confirmation']}</span>--%>
+        <c:if test="${!empty form.errors['confirmation']}">
+            <small class="error">${form.errors['confirmation']}</small>
+        </c:if>
         <br/>
 
         <input type="text" id="name" name="name" value="<c:out value="${user.name}"/>" size="20" maxlength="20"
                placeholder="Username"/>
-        <%--<span class="error">${form.errors['name'] ? }</span>--%>
+        <c:if test="${!empty form.errors['name']}">
+            <small class="error">${form.errors['name']}</small>
+        </c:if>
         <br/>
 
         <input type="submit" value="Sign up" class="button expand right"/>

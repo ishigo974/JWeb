@@ -22,11 +22,15 @@
 
         <input type="email" id="email" name="email" value="<c:out value="${user.email}"/>" size="20"
                maxlength="60" placeholder="Email"/>
-        <%--<span class="error">${form.errors['email']}</span>--%>
+        <c:if test="${!empty form.errors['email']}">
+            <small class="error">${form.errors['email']}</small>
+        </c:if>
         <br/>
 
-        <input type="password" id="password" name="password" size="20" maxlength="20" placeholder="Password"/>
-        <%--<span class="error">${form.errors['password']}</span>--%>
+        <input type="password" id="password" name="password" size="20" maxlength="20" placeholder="Password" class="input_field"/>
+        <c:if test="${!empty form.errors['password']}">
+            <small class="error">${form.errors['password']}</small>
+        </c:if>
         <br/>
 
         <input type="submit" value="Login" class="button expand right"/>

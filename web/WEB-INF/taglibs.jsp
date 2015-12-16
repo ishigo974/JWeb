@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="css/foundation.css">
 
-<%--<link rel="stylesheet" href="css/app.css">--%>
+<link rel="stylesheet" href="css/style.css">
 
 <script src="js/vendor/modernizr.js"></script>
 <script src="js/vendor/jquery.js"></script>

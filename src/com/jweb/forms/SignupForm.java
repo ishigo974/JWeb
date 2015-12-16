@@ -46,7 +46,7 @@ public final class SignupForm {
             password_validator(password, confirmation);
         } catch (Exception e) {
             setError(password_input, e.getMessage());
-            setError(confirmation_input, null);
+            setError(confirmation_input, e.getMessage());
         }
         user.setPassword(password);
         try {
@@ -86,7 +86,7 @@ public final class SignupForm {
     }
 
     private void name_validator(String name) throws Exception {
-        if (name != null && name.length() < 3) {
+        if (name == null || name.length() < 3) {
             throw new Exception("Your name must be at least 3 characters long");
         }
     }
