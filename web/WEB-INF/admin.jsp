@@ -11,9 +11,12 @@
     <title>Admin</title>
 </head>
 <body>
-    <h1>Administration page</h1>
+<h1>Administration page</h1>
 
-    <input type="text" name="login" placeholder="Login" />
-    <input type="password" name="password" placeholder="Password" />
+<form method="post" action="login">
+    <input type="text" name="login" placeholder="Login"/>
+    <input type="password" name="password" placeholder="Password"/><br/><br/>
+    <input type="submit" value="Login"/>
+</form>
 </body>
 </html>

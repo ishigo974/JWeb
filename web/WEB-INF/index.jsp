@@ -9,16 +9,19 @@
 <html>
 <head>
     <title>JWeb</title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
 </head>
 <body>
 <h1>Home page</h1>
 
 <c:forEach var="news" items="${articles}">
     <h2><c:out value="${news.title}"/></h2>
+
     <p><c:out value="${news.content}"/></p>
 </c:forEach>
 
 <br/>
-<a href="admin.jsp" class="button">Admin</a>
+<a href="admin" class="button">Admin</a>
+<a href="signup" class="button">Sign up</a>
 </body>
 </html>

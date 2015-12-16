@@ -10,9 +10,6 @@ import java.io.IOException;
  * Created by menigo_m on 16/12/15.
  */
 public class AdminServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
