@@ -11,7 +11,7 @@
     <title>JWeb</title>
 </head>
 <body>
-<%@ include file="beginFoundation.jsp"%>
+<%@ included file="beginFoundation.jsp"%>
 <h1>Home page</h1>
 
 <c:forEach var="news" items="${articles}">
