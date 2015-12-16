@@ -21,7 +21,8 @@
 </c:forEach>
 
 <br/>
-<a href="admin" class="button">Admin</a>
-<a href="signup" class="button">Sign up</a>
+<a href="login">Login</a>
+<a href="signup">Sign up</a>
+<a href="admin">Admin</a>
 </body>
 </html>

@@ -9,11 +9,9 @@ import java.util.Map;
 /**
  * Created by menigo_m on 16/12/15.
  */
-public final class SignupForm {
+public class LoginForm {
     private static final String email_input = "email";
     private static final String password_input = "password";
-    private static final String confirmation_input = "confirmation";
-    private static final String name = "name";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
@@ -30,11 +28,9 @@ public final class SignupForm {
         return result;
     }
 
-    public User signupUser(HttpServletRequest request) {
+    public User loginUser(HttpServletRequest request) {
         String email = getValue(request, email_input);
         String password = getValue(request, password_input);
-        String confirmation = getValue(request, confirmation_input);
-        String name = getValue(request, SignupForm.name);
         User user = new User();
         try {
             email_validator(email);
@@ -43,22 +39,15 @@ public final class SignupForm {
         }
         user.setEmail(email);
         try {
-            password_validator(password, confirmation);
+            password_validator(password);
         } catch (Exception e) {
             setError(password_input, e.getMessage());
-            setError(confirmation_input, null);
         }
         user.setPassword(password);
-        try {
-            name_validator(name);
-        } catch (Exception e) {
-            setError(SignupForm.name, e.getMessage());
-        }
-        user.setName(name);
         if (errors.isEmpty()) {
-            result = "Sign up success";
+            result = "Login success";
         } else {
-            result = "Sign up failure";
+            result = "Login failure";
         }
         return user;
     }
@@ -73,21 +62,9 @@ public final class SignupForm {
         }
     }
 
-    private void password_validator(String password, String confirmation) throws Exception {
-        if (password != null && confirmation != null) {
-            if (!password.equals(confirmation)) {
-                throw new Exception("Password and confirmation do not match");
-            } else if (password.length() < 3) {
-                throw new Exception("Your password must be at least 3 characters long");
-            }
-        } else {
+    private void password_validator(String password) throws Exception {
+        if (password == null || password.length() < 3) {
             throw new Exception("Invalid password");
-        }
-    }
-
-    private void name_validator(String name) throws Exception {
-        if (name != null && name.length() < 3) {
-            throw new Exception("Your name must be at least 3 characters long");
         }
     }
 
