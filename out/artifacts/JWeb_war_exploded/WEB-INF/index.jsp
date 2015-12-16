@@ -7,11 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>JWeb</title>
-  </head>
-  <body>
-    <h1>This is the index</h1>
-    <a href="admin">Admin</a>
-  </body>
+</head>
+<body>
+<h1>Home page</h1>
+
+<c:forEach var="news" items="${articles}">
+    <h2><c:out value="${news.title}"/></h2>
+    <p><c:out value="${news.content}"/></p>
+</c:forEach>
+
+<br/>
+<a href="admin.jsp" class="button">Admin</a>
+</body>
 </html>

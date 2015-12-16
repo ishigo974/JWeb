@@ -12,5 +12,8 @@
 </head>
 <body>
     <h1>Administration page</h1>
+
+    <input type="text" name="login" placeholder="Login" />
+    <input type="password" name="password" placeholder="Password" />
 </body>
 </html>
