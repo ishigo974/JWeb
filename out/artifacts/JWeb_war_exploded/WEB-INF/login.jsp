@@ -14,6 +14,9 @@
 <%@ include file="beginFoundation.jsp"%>
 
 <form method="post" action="login">
+    <c:if test="${!empty form.result}">
+        <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>
+    </c:if>
     <fieldset>
         <legend>Login</legend>
 
@@ -26,10 +29,9 @@
         <%--<span class="error">${form.errors['password']}</span>--%>
         <br/>
 
-        <input type="submit" value="Login"/>
+        <input type="submit" value="Login" class="button expand right"/>
         <br/>
 
-        <p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
         ${sessionScope.userSession.email}
     </fieldset>
 </form>

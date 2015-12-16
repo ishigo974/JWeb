@@ -56,9 +56,9 @@ public final class SignupForm {
         }
         user.setName(name);
         if (errors.isEmpty()) {
-            result = "Sign up success";
+            result = "You have signed up successfully.";
         } else {
-            result = "Sign up failure";
+            result = "Sign up failure.";
         }
         return user;
     }

@@ -11,9 +11,13 @@
     <title>Sign up page</title>
 </head>
 <body>
-<%@ include file="beginFoundation.jsp"%>
+<%@ include file="beginFoundation.jsp" %>
 
 <form method="post" action="signup">
+    <c:if test="${!empty form.result}">
+        <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>
+    </c:if>
+
     <fieldset>
         <legend>Sign up</legend>
 
@@ -36,13 +40,10 @@
         <%--<span class="error">${form.errors['name'] ? }</span>--%>
         <br/>
 
-        <input type="submit" value="Sign up"/>
-        <br/>
-
-        <p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
+        <input type="submit" value="Sign up" class="button expand right"/>
     </fieldset>
 </form>
 
-<%@ include file="endFoundation.jsp"%>
+<%@ include file="endFoundation.jsp" %>
 </body>
 </html>
