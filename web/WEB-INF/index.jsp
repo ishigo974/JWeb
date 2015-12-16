@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>JWeb</title>
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
 </head>
 <body>
+<%@ include file="beginFoundation.jsp"%>
 <h1>Home page</h1>
 
 <c:forEach var="news" items="${articles}">
@@ -21,8 +21,10 @@
 </c:forEach>
 
 <br/>
-<a href="login">Login</a>
-<a href="signup">Sign up</a>
-<a href="admin">Admin</a>
+<a href="login" class="button success">Login</a>
+<a href="signup" class="button">Sign up</a>
+<a href="admin" class="button alert">Admin</a>
+
+<%@ include file="endFoundation.jsp"%>
 </body>
 </html>

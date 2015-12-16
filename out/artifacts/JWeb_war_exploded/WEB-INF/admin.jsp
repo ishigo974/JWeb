@@ -11,7 +11,11 @@
     <title>Admin</title>
 </head>
 <body>
+<%@ include file="beginFoundation.jsp"%>
+
 <h1>Administration page</h1>
 
+
+<%@ include file="endFoundation.jsp"%>
 </body>
 </html>

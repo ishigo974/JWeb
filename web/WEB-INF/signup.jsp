@@ -11,6 +11,7 @@
     <title>Sign up page</title>
 </head>
 <body>
+<%@ include file="beginFoundation.jsp"%>
 
 <form method="post" action="signup">
     <fieldset>
@@ -18,21 +19,21 @@
 
         <input type="email" id="email" name="email" value="<c:out value="${user.email}"/>" size="20"
                maxlength="60" placeholder="Email"/>
-        <span class="error">${form.errors['email']}</span>
+        <%--<span class="error">${form.errors['email']}</span>--%>
         <br/>
 
         <input type="password" id="password" name="password" size="20" maxlength="20" placeholder="Password"/>
-        <span class="error">${form.errors['password']}</span>
+        <%--<span class="error">${form.errors['password']}</span>--%>
         <br/>
 
         <input type="password" id="confirmation" name="confirmation" size="20" maxlength="20"
                placeholder="Password confirmation"/>
-        <span class="error">${form.errors['confirmation']}</span>
+        <%--<span class="error">${form.errors['confirmation']}</span>--%>
         <br/>
 
         <input type="text" id="name" name="name" value="<c:out value="${user.name}"/>" size="20" maxlength="20"
                placeholder="Username"/>
-        <span class="error">${form.errors['name']}</span>
+        <%--<span class="error">${form.errors['name'] ? }</span>--%>
         <br/>
 
         <input type="submit" value="Sign up"/>
@@ -41,5 +42,7 @@
         <p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
     </fieldset>
 </form>
+
+<%@ include file="endFoundation.jsp"%>
 </body>
 </html>

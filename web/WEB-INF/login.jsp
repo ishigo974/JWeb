@@ -11,17 +11,19 @@
     <title>Login</title>
 </head>
 <body>
+<%@ include file="beginFoundation.jsp"%>
+
 <form method="post" action="login">
     <fieldset>
         <legend>Login</legend>
 
         <input type="email" id="email" name="email" value="<c:out value="${user.email}"/>" size="20"
                maxlength="60" placeholder="Email"/>
-        <span class="error">${form.errors['email']}</span>
+        <%--<span class="error">${form.errors['email']}</span>--%>
         <br/>
 
         <input type="password" id="password" name="password" size="20" maxlength="20" placeholder="Password"/>
-        <span class="error">${form.errors['password']}</span>
+        <%--<span class="error">${form.errors['password']}</span>--%>
         <br/>
 
         <input type="submit" value="Login"/>
@@ -31,5 +33,6 @@
     </fieldset>
 </form>
 
+<%@ include file="endFoundation.jsp"%>
 </body>
 </html>
