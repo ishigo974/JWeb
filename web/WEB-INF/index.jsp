@@ -24,7 +24,7 @@
 <a href="login" class="button success">Login</a>
 <a href="signup" class="button">Sign up</a>
 <a href="admin" class="button alert">Admin</a>
-
+${sessionScope.userSession.email}
 <%@ include file="endFoundation.jsp"%>
 </body>
 </html>

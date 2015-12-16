@@ -30,6 +30,7 @@
         <br/>
 
         <p class="${empty form.errors ? 'success' : 'error'}">${form.result}</p>
+        ${sessionScope.userSession.email}
     </fieldset>
 </form>
 

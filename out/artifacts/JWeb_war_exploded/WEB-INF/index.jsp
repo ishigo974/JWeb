@@ -21,10 +21,17 @@
 </c:forEach>
 
 <br/>
+<<<<<<< HEAD
 <a href="login" class="button success">Login</a>
 <a href="signup" class="button">Sign up</a>
 <a href="admin" class="button alert">Admin</a>
 
 <%@ include file="endFoundation.jsp"%>
+=======
+<a href="login">Login</a>
+<a href="signup">Sign up</a>
+<a href="admin">Admin</a>
+${sessionScope.userSession.email}
+>>>>>>> ad8e26e76922b398f6594fedd9024f00cb2fb9cd
 </body>
 </html>
