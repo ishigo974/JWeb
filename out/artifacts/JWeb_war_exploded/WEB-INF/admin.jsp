@@ -29,22 +29,21 @@
 
     <table class="large-8 large-push-2 small-12 columns" style="padding: 0px; border: 0;">
         <tr>
-            <th class="small-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Username
-            </th>
-            <th class="small-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+            </td>
+            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Email
-            </th>
-            <th class="small-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
-                Date de création
-            </th>
+            </td>
+            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+                Creation date
+            </td>
         </tr>
-
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="u" items="${users}">
             <tr>
-                <td><c:out value="${user.name}"/></td>
-                <td><c:out value="${user.email}"/></td>
-                <td><c:out value="${user.date_created}"/></td>
+                <td class="small-4 columns text-center"><c:out value="${u.name}"/></td>
+                <td class="small-4 columns text-center"><c:out value="${u.email}"/></td>
+                <td class="small-4 columns text-center"><c:out value="LOL"/></td>
             </tr>
         </c:forEach>
     </table>
