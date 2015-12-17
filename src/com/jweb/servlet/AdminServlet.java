@@ -12,6 +12,7 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         this.getServletContext().getRequestDispatcher("/WEB-INF/admin.jsp").forward(request, response);
     }
 }

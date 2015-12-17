@@ -1197,6 +1197,14 @@ button, .button {
     background-color: #f08a24;
     border-color: #cf6e0e;
     color: #FFFFFF; }
+  button.midnight, .button.midnight {
+    background-color: #2c3e50;
+    border-color: #233240;
+    color: #FFFFFF; }
+  button.midnight:hover, button.midnight:focus, .button.midnight:hover, .button.midnight:focus {
+    background-color: #233240; }
+  button.midnight:hover, button.midnight:focus, .button.midnight:hover, .button.midnight:focus {
+    color: #FFFFFF; }
     button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
       background-color: #cf6e0e; }
     button.warning:hover, button.warning:focus, .button.warning:hover, .button.warning:focus {
