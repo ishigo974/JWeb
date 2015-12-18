@@ -1,8 +1,11 @@
 package com.jweb.forms;
 
 import com.jweb.beans.User;
+import com.jweb.dao.DBErrors;
+import com.jweb.dao.UserDao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +15,7 @@ import java.util.Map;
 public class LoginForm {
     private static final String email_input = "email";
     private static final String password_input = "password";
+    private static final String bdd_error = "database";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
@@ -29,26 +33,27 @@ public class LoginForm {
     }
 
     public User loginUser(HttpServletRequest request) {
+        UserDao db;
+        try {
+            db = new UserDao();
+        } catch (DBErrors e)
+        {
+            setError(bdd_error, e.getMessage());
+            result = e.getMessage();
+            return null;
+        }
+
         String email = getValue(request, email_input);
         String password = getValue(request, password_input);
-        User user = new User();
+        User user = null;
         try {
-            email_validator(email);
-        } catch (Exception e) {
-            setError(email_input, e.getMessage());
+            user = db.getUser(email, password);
+        } catch (DBErrors e) {
+            setError(bdd_error, e.getMessage());
+            result = e.getMessage();
+            return null;
         }
-        user.setEmail(email);
-        try {
-            password_validator(password);
-        } catch (Exception e) {
-            setError(password_input, e.getMessage());
-        }
-        user.setPassword(password);
-        if (errors.isEmpty()) {
-            result = "Login success";
-        } else {
-            result = "Login failure";
-        }
+        result = "You are now logged in";
         return user;
     }
 

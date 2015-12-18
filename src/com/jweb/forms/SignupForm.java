@@ -1,6 +1,8 @@
 package com.jweb.forms;
 
 import com.jweb.beans.User;
+import com.jweb.dao.DBErrors;
+import com.jweb.dao.UserDao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -13,7 +15,7 @@ public final class SignupForm {
     private static final String email_input = "email";
     private static final String password_input = "password";
     private static final String confirmation_input = "confirmation";
-    private static final String name = "name";
+    private static final String user_name = "name";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
@@ -34,7 +36,7 @@ public final class SignupForm {
         String email = getValue(request, email_input);
         String password = getValue(request, password_input);
         String confirmation = getValue(request, confirmation_input);
-        String name = getValue(request, SignupForm.name);
+        String userName = getValue(request, SignupForm.user_name);
         User user = new User();
         try {
             email_validator(email);
@@ -50,15 +52,23 @@ public final class SignupForm {
         }
         user.setPassword(password);
         try {
-            name_validator(name);
+            name_validator(userName);
         } catch (Exception e) {
-            setError(SignupForm.name, e.getMessage());
+            setError(SignupForm.user_name, e.getMessage());
         }
-        user.setName(name);
+        user.setName(userName);
         if (errors.isEmpty()) {
             result = "You have signed up successfully.";
         } else {
             result = "Sign up failure.";
+        }
+        try {
+            UserDao db = new UserDao();
+            db.setUser(user);
+        } catch (DBErrors e) {
+            setError(SignupForm.user_name, e.getMessage());
+            result = "Sign up failure.";
+            return null;
         }
         return user;
     }
