@@ -65,17 +65,17 @@ public final class UpdateUserForm {
         }
         user.setName(userName);
         if (errors.isEmpty()) {
+            try {
+                UserDao db = new UserDao();
+                db.updateUser(user);
+            } catch (DBErrors e) {
+                setError(user_name, e.getMessage());
+                result = "Sign up failure.";
+                return null;
+            }
             result = "You have signed up successfully.";
         } else {
             result = "Sign up failure.";
-        }
-        try {
-            UserDao db = new UserDao();
-            db.updateUser(user);
-        } catch (DBErrors e) {
-            setError(user_name, e.getMessage());
-            result = "Sign up failure.";
-            return null;
         }
         return user;
     }

@@ -52,7 +52,7 @@
                placeholder="News Letter"/>
         <br/>
         <input type="hidden" name="id" value="<c:out value="${user.id}"/>">
-        <input type="submit" value="Sign up" class="button expand right"/>
+        <input type="submit" value="Save" class="button expand right"/>
     </fieldset>
 </form>
 

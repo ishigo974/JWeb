@@ -62,17 +62,17 @@ public final class SignupForm {
         }
         user.setName(userName);
         if (errors.isEmpty()) {
+            try {
+                UserDao db = new UserDao();
+                db.setUser(user);
+            } catch (DBErrors e) {
+                setError(SignupForm.user_name, e.getMessage());
+                result = "Sign up failure.";
+                return null;
+            }
             result = "You have signed up successfully.";
         } else {
             result = "Sign up failure.";
-        }
-        try {
-            UserDao db = new UserDao();
-            db.setUser(user);
-        } catch (DBErrors e) {
-            setError(SignupForm.user_name, e.getMessage());
-            result = "Sign up failure.";
-            return null;
         }
         return user;
     }

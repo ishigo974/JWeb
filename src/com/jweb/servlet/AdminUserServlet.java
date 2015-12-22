@@ -50,9 +50,7 @@ public class AdminUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UpdateUserForm form = new UpdateUserForm();
-        request.setAttribute("form", form);
-        User user = form.UpdateUser(request);
-        request.setAttribute("user", user);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/adminUser.jsp").forward(request, response);
+        form.UpdateUser(request);
+        response.sendRedirect("/admin/users");
     }
 }

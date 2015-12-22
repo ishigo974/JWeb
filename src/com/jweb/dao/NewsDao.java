@@ -97,4 +97,33 @@ public class NewsDao {
             throw new DBErrors(e.getMessage());
         }
     }
+
+    public void updateNews(News simpleNew) throws DBErrors {
+        Statement statement;
+        try {
+            statement = bdd.createStatement();
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+        try {
+            statement.executeUpdate("UPDATE news SET title = '" + simpleNew.getTitle() + "', content = '" + simpleNew.getContent() +
+                                    "' WHERE id = " + simpleNew.getId() + ";");
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+    }
+
+    public void deleteNews(int id) throws DBErrors {
+        Statement statement;
+        try {
+            statement = bdd.createStatement();
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+        try {
+            statement.executeUpdate("DELETE FROM news WHERE id = " + id + ";");
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+    }
 }

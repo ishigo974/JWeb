@@ -142,4 +142,18 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
     }
+
+    public void deleteUser(int id) throws DBErrors {
+        Statement statement;
+        try {
+            statement = bdd.createStatement();
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+        try {
+            statement.executeUpdate("DELETE FROM users WHERE id = " + id + ";");
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+    }
 }
