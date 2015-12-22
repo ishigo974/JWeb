@@ -14,9 +14,6 @@
 <%@ include file="beginFoundation.jsp" %>
 
 <form method="post" action="signup">
-    <c:if test="${!empty form.result}">
-        <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>
-    </c:if>
 
     <fieldset>
         <legend>Sign up</legend>
@@ -48,7 +45,7 @@
         </c:if>
         <br/>
 
-        <input type="checkbox" id="news" name="news" value="<c:out value="${user.news}"/>" size="20" maxlength="20"
+        <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
                placeholder="News Letter"/>
         <br/>
 

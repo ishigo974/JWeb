@@ -12,6 +12,11 @@
 </head>
 <body>
 <%@ include file="beginFoundation.jsp"%>
+
+<c:if test="${!empty form.result}">
+    <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>
+</c:if>
+
 <h1>Home page</h1>
 
 <c:forEach var="news" items="${articles}">

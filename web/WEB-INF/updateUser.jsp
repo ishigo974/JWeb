@@ -48,9 +48,10 @@
         </c:if>
         <br/>
 
-        <input type="checkbox" id="news" name="news" value="<c:out value="${user.news}"/>" size="20" maxlength="20"
-               placeholder="News Letter"/>
+        <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
+               placeholder="News Letter" <c:if test="${user.news == true}">checked</c:if>/>
         <br/>
+
         <input type="hidden" name="id" value="<c:out value="${user.id}"/>">
         <input type="submit" value="Save" class="button expand right"/>
     </fieldset>

@@ -39,7 +39,11 @@ public final class UpdateUserForm {
         String password = getValue(request, password_input);
         String confirmation = getValue(request, confirmation_input);
         String userName = getValue(request, user_name);
-        boolean newsLetter = Boolean.getBoolean(getValue(request, user_news));
+        boolean newsLetter;
+        if (getValue(request, user_news) != null)
+            newsLetter = getValue(request, user_news).equals("checked");
+        else
+            newsLetter = false;
         int id = Integer.parseInt(getValue(request, user_id));
 
         User user = new User();

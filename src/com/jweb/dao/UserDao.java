@@ -37,7 +37,7 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT id, email, pswd, name FROM users WHERE email = '" + email + "';" );
+            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, name FROM users WHERE email = '" + email + "';" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -49,6 +49,7 @@ public class UserDao {
             user.setEmail(result.getString("email"));
             user.setName(result.getString("name"));
             user.setPassword(result.getString("pswd"));
+            user.setNews(result.getBoolean("newsletter"));
             user.setId(result.getInt("id"));
         } catch (SQLException e) {
             throw new DBErrors("Can not log in");
@@ -65,7 +66,7 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT id, email, pswd, name FROM users WHERE id = '" + String.valueOf(id) + "';" );
+            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, name FROM users WHERE id = '" + String.valueOf(id) + "';" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -76,6 +77,7 @@ public class UserDao {
                 throw new DBErrors("Can not log in");
             user.setEmail(result.getString("email"));
             user.setName(result.getString("name"));
+            user.setNews(result.getBoolean("newsletter"));
             user.setId(result.getInt("id"));
         } catch (SQLException e) {
             throw new DBErrors("Can not log in");

@@ -38,7 +38,11 @@ public final class SignupForm {
         String password = getValue(request, password_input);
         String confirmation = getValue(request, confirmation_input);
         String userName = getValue(request, SignupForm.user_name);
-        boolean newsLetter = Boolean.getBoolean(getValue(request, SignupForm.user_news));
+        boolean newsLetter;
+        if (getValue(request, SignupForm.user_news) != null)
+            newsLetter = getValue(request, SignupForm.user_news).equals("checked");
+        else
+            newsLetter = false;
 
         User user = new User();
         user.setNews(newsLetter);
