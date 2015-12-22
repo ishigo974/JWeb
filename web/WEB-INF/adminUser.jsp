@@ -10,7 +10,6 @@
 <head>
     <title>Admin</title>
 </head>
-<a>
     <%@ include file="beginFoundation.jsp" %>
     <h1>Administration page</h1>
 
@@ -29,21 +28,25 @@
 
     <table class="large-8 large-push-2 small-12 columns" style="padding: 0px; border: 0;">
         <tr>
-            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+            <td class="large-3 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Username
             </td>
-            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+            <td class="large-3 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Email
             </td>
-            <td class="large-4 columns text-center button midnight" style="margin:0" data-equalizer-watch>
-                Creation date
+            <td class="large-3 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+                News Letter
+            </td>
+            <td class="large-3 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+                Edit
             </td>
         </tr>
         <c:forEach var="u" items="${users}">
             <tr>
-                <td class="small-4 columns text-center"><c:out value="${u.name}"/></td>
-                <td class="small-4 columns text-center"><c:out value="${u.email}"/></td>
-                <td class="small-4 columns text-center"><c:out value="LOL"/></td>
+                <td class="small-3 columns text-center"><c:out value="${u.name}"/></td>
+                <td class="small-3 columns text-center"><c:out value="${u.email}"/></td>
+                <td class="small-3 columns text-center"><c:out value="${u.news}"/></td>
+                <td class="small-3 columns text-center"><a href="/admin/users?id=<c:out value="${u.id}"/>">Edit</a></td>
             </tr>
         </c:forEach>
     </table>

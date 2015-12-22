@@ -22,15 +22,15 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>AdminServlet</servlet-name>
-        <servlet-class>com.jweb.servlet.AdminServlet</servlet-class>
+        <servlet-name>AdminUserServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.AdminUserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
+        <servlet-name>AdminUserServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminServlet</servlet-name>
+        <servlet-name>AdminUserServlet</servlet-name>
         <url-pattern>/admin/users</url-pattern>
     </servlet-mapping>
 

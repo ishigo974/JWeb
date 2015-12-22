@@ -9,14 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by menigo_m on 16/12/15.
+ * Created by lopes_n on 12/22/15.
  */
-public final class SignupForm {
+public final class UpdateUserForm {
     private static final String email_input = "email";
     private static final String password_input = "password";
     private static final String confirmation_input = "confirmation";
     private static final String user_name = "name";
     private static final String user_news = "news";
+    private static final String user_id = "id";
 
     private String result;
     private Map<String, String> errors = new HashMap<String, String>();
@@ -33,15 +34,17 @@ public final class SignupForm {
         return result;
     }
 
-    public User signupUser(HttpServletRequest request) {
+    public User UpdateUser(HttpServletRequest request) {
         String email = getValue(request, email_input);
         String password = getValue(request, password_input);
         String confirmation = getValue(request, confirmation_input);
-        String userName = getValue(request, SignupForm.user_name);
-        boolean newsLetter = Boolean.getBoolean(getValue(request, SignupForm.user_news));
+        String userName = getValue(request, user_name);
+        boolean newsLetter = Boolean.getBoolean(getValue(request, user_news));
+        int id = Integer.parseInt(getValue(request, user_id));
 
         User user = new User();
         user.setNews(newsLetter);
+        user.setId(id);
         try {
             email_validator(email);
         } catch (Exception e) {
@@ -58,7 +61,7 @@ public final class SignupForm {
         try {
             name_validator(userName);
         } catch (Exception e) {
-            setError(SignupForm.user_name, e.getMessage());
+            setError(user_name, e.getMessage());
         }
         user.setName(userName);
         if (errors.isEmpty()) {
@@ -68,9 +71,9 @@ public final class SignupForm {
         }
         try {
             UserDao db = new UserDao();
-            db.setUser(user);
+            db.updateUser(user);
         } catch (DBErrors e) {
-            setError(SignupForm.user_name, e.getMessage());
+            setError(user_name, e.getMessage());
             result = "Sign up failure.";
             return null;
         }
