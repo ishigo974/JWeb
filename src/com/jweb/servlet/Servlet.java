@@ -2,6 +2,8 @@ package com.jweb.servlet;
 
 import com.jweb.beans.News;
 import com.jweb.beans.User;
+import com.jweb.dao.DBErrors;
+import com.jweb.dao.NewsDao;
 import com.jweb.forms.SignupForm;
 
 import javax.servlet.ServletException;
@@ -20,15 +22,14 @@ public class Servlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        News news = new News();
-        news.setTitle("Titre de la news toto");
-        news.setContent("Lorem ipsum blabladwkdjwejdwejwej");
+        NewsDao bdd;
+        List<News> articles = null;
+        try {
+            bdd = new NewsDao();
+            articles = bdd.getNews();
+        } catch (DBErrors dbErrors) {
 
-        List<News> articles = new ArrayList<>();
-        articles.add(news);
-        articles.add(news);
-        articles.add(news);
-        articles.add(news);
+        }
 
         request.setAttribute("articles", articles);
         this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);

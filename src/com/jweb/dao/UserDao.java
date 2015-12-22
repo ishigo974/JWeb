@@ -28,8 +28,8 @@ public class UserDao {
     }
 
     public User getUser(String email, String password) throws DBErrors {
-        Statement statement = null;
-        ResultSet result = null;
+        Statement statement;
+        ResultSet result;
         try {
             statement = bdd.createStatement();
         } catch (SQLException e) {
@@ -47,6 +47,8 @@ public class UserDao {
                 throw new DBErrors("Can not log in");
             user.setEmail(result.getString("email"));
             user.setName(result.getString("name"));
+            user.setPassword(result.getString("pswd"));
+            user.setId(result.getInt("id"));
         } catch (SQLException e) {
             throw new DBErrors("Can not log in");
         }
@@ -54,7 +56,7 @@ public class UserDao {
     }
 
     public void setUser(User user) throws DBErrors {
-        Statement statement = null;
+        Statement statement;
         try {
             statement = bdd.createStatement();
         } catch (SQLException e) {

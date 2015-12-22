@@ -6,6 +6,7 @@ package com.jweb.beans;
 public class News {
     private String title;
     private String content;
+    private int id;
 
     public String getTitle() {
         return title;
@@ -22,4 +23,8 @@ public class News {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }
