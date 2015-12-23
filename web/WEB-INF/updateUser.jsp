@@ -5,11 +5,9 @@
   Time: 11:58 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Edit User</title>
-</head>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="Edit user"/>
+</jsp:include>
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
@@ -48,14 +46,14 @@
         </c:if>
         <br/>
 
-        <label for="news">News Letter</label>
         <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
                placeholder="News Letter" <c:if test="${user.news == true}">checked</c:if>/>
+        <label for="news">News Letter</label>
         <br/>
 
-        <label for="admin">Admin</label>
         <input type="checkbox" id="admin" name="admin" value="admin" size="20" maxlength="20"
                placeholder="Admin" <c:if test="${user.admin == true}">checked</c:if>/>
+        <label for="admin">Admin</label>
         <br/>
 
         <input type="hidden" name="id" value="<c:out value="${user.id}"/>">

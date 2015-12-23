@@ -5,11 +5,10 @@
   Time: 12:26
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Admin</title>
-</head>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="Admin"/>
+</jsp:include>
+<body>
     <%@ include file="beginFoundation.jsp" %>
 
     <jsp:include page="adminPannel.jsp" />
@@ -37,12 +36,12 @@
         </tr>
         <c:forEach var="u" items="${users}">
             <tr>
-                <td class="small-3 columns text-center"><c:out value="${u.name}"/></td>
-                <td class="small-3 columns text-center"><c:out value="${u.email}"/></td>
-                <td class="small-3 columns text-center"><c:out value="${u.news}"/></td>
-                <td class="small-3 columns text-center"><c:out value="${u.admin}"/></td>
-                <td class="small-3 columns text-center"><a href="/admin/users?id=<c:out value="${u.id}"/>">Edit</a></td>
-                <td class="small-3 columns text-center"><a href="/admin/users/delete?id=<c:out value="${u.id}"/>">Delete</a></td>
+                <td class="small-2 columns text-center"><c:out value="${u.name}"/></td>
+                <td class="small-2 columns text-center"><c:out value="${u.email}"/></td>
+                <td class="small-2 columns text-center"><c:out value="${u.news}"/></td>
+                <td class="small-2 columns text-center"><c:out value="${u.admin}"/></td>
+                <td class="small-2 columns text-center"><a href="/admin/users?id=<c:out value="${u.id}"/>">Edit</a></td>
+                <td class="small-2 columns text-center"><a href="/admin/users/delete?id=<c:out value="${u.id}"/>">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

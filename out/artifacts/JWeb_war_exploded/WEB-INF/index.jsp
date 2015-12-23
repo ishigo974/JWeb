@@ -5,11 +5,9 @@
   Time: 19:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>JWeb</title>
-</head>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="JWeb"/>
+</jsp:include>
 <body>
 <%@ include file="beginFoundation.jsp"%>
 

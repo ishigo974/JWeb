@@ -5,11 +5,9 @@
   Time: 18:08
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Sign up page</title>
-</head>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="Sign up page"/>
+</jsp:include>
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
@@ -45,9 +43,9 @@
         </c:if>
         <br/>
 
-        <label for="news">News Letter</label>
         <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
                placeholder="News Letter"/>
+        <label for="news">News Letter</label>
         <br/>
 
         <input type="submit" value="Sign up" class="button expand right"/>

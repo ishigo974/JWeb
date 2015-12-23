@@ -5,11 +5,9 @@
   Time: 7:34 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Add a News</title>
-</head>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="Add a news"/>
+</jsp:include>
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
@@ -22,8 +20,9 @@
                maxlength="60" placeholder="Title"/>
         <br/>
 
-        <input type="textarea" id="content" name="content" value="<c:out value="${simpleNew.content}"/>"
-               maxlength="150" placeholder="Content"/>
+        <textarea name="content" id="content" rows="5" placeholder="Content">
+            <c:out value="${simpleNew.content}"/>
+        </textarea>
         <br/>
 
         <input type="submit" value="Save" class="button expand right"/>
