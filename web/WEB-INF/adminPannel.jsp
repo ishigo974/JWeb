@@ -13,7 +13,7 @@
 <a href="/admin/news">
     <div class="button large-3 columns">All news</div>
 </a>
-<a href="#">
+<a href="/admin/articles">
     <div class="button warning large-3 columns">All products</div>
 </a>
 <a href="/signup">

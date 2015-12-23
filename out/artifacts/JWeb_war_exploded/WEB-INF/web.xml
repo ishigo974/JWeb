@@ -62,6 +62,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AdminArticlesServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.AdminArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminArticlesServlet</servlet-name>
+        <url-pattern>/admin/articles</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>addNewsServlet</servlet-name>
         <servlet-class>com.jweb.servlet.addNewsServlet</servlet-class>
     </servlet>
@@ -86,6 +95,24 @@
     <servlet-mapping>
         <servlet-name>deleteUserServlet</servlet-name>
         <url-pattern>/admin/users/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addArticleServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.addArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addArticleServlet</servlet-name>
+        <url-pattern>/admin/articles/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteArticlesServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.deleteArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteArticlesServlet</servlet-name>
+        <url-pattern>/admin/articles/delete</url-pattern>
     </servlet-mapping>
 
     <error-page>
