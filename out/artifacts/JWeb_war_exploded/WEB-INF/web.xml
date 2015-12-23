@@ -66,7 +66,7 @@
         <servlet-class>com.jweb.servlet.AdminArticleServlet</servlet-class>
         <init-param>
             <param-name>imageFolder</param-name>
-            <param-value>/web/assets/files/</param-value>
+            <param-value>/assets/files/</param-value>
         </init-param>
         <multipart-config>
             <location>/tmp</location>
@@ -112,7 +112,7 @@
         <servlet-class>com.jweb.servlet.addArticleServlet</servlet-class>
         <init-param>
             <param-name>imageFolder</param-name>
-            <param-value>/web/assets/files/</param-value>
+            <param-value>/assets/files/</param-value>
         </init-param>
         <multipart-config>
             <location>/tmp</location>

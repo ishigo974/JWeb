@@ -21,7 +21,7 @@ public class addArticleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         addArticleForm form = new addArticleForm();
         Part part = request.getPart("image");
-        String imageFolder = getServletContext().getRealPath("/").split("out")[0] + this.getServletConfig().getInitParameter("imageFolder");
+        String imageFolder = getServletContext().getRealPath("/") + this.getServletConfig().getInitParameter("imageFolder");
 
         String fileName = getFileName(part);
         if (fileName != null && !fileName.isEmpty()) {
