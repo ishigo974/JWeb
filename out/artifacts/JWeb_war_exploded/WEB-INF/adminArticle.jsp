@@ -10,11 +10,12 @@
 </jsp:include>
 <%@ include file="beginFoundation.jsp" %>
 
+<jsp:include page="userPannel.jsp" />
 <jsp:include page="adminPannel.jsp" />
 
 <a href="/admin/articles/add">
     <div class="row large-12">
-        <div class="button midnight large-push-5 large-2 columns">Add an Article</div>
+        <div class="button midnight large-push-5 large-2 columns">Add a Product</div>
     </div>
 </a>
 

@@ -15,6 +15,8 @@
     <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>
 </c:if>
 
+<jsp:include page="userPannel.jsp" />
+
 <h1>Home page</h1>
 
 <c:forEach var="news" items="${articles}">
@@ -22,21 +24,6 @@
 
     <p><c:out value="${news.content}"/></p>
 </c:forEach>
-
-<br/>
-<c:choose>
-    <c:when test="${empty sessionScope.userSession}">
-        <a href="login" class="button success">Login</a>
-        <a href="signup" class="button">Sign up</a>
-    </c:when>
-    <c:otherwise>
-        <a href="logout" class="button warning">Logout</a>
-    </c:otherwise>
-</c:choose>
-
-<c:if test="${!empty sessionScope.userSession && sessionScope.userSession.admin}">
-    <a href="admin" class="button alert">Admin</a>
-</c:if>
 
 <%@ include file="endFoundation.jsp"%>
 </body>

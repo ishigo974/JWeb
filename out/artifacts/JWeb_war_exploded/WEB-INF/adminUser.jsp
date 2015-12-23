@@ -11,6 +11,7 @@
 <body>
     <%@ include file="beginFoundation.jsp" %>
 
+    <jsp:include page="userPannel.jsp" />
     <jsp:include page="adminPannel.jsp" />
 
     <table class="large-12 small-12 columns" style="padding: 0px; border: 0;">

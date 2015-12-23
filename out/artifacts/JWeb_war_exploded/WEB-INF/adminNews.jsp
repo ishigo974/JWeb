@@ -10,6 +10,7 @@
 </jsp:include>
 <%@ include file="beginFoundation.jsp" %>
 
+<jsp:include page="userPannel.jsp" />
 <jsp:include page="adminPannel.jsp" />
 
 <a href="/admin/news/add">

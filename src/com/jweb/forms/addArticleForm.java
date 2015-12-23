@@ -13,14 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 public class addArticleForm {
     private static final String article_title = "title";
     private static final String article_content = "content";
+    private static final String article_price = "price";
 
     public Article addArticle(HttpServletRequest request) {
         String title = getValue(request, article_title);
+        String price = getValue(request, article_price);
         String content = getValue(request, article_content);
 
         Article article = new Article();
         article.setContent(content);
         article.setTitle(title);
+        article.setPrice(price);
         try {
             ArticleDao db = new ArticleDao();
             db.setArticle(article);

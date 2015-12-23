@@ -11,6 +11,8 @@
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
+<jsp:include page="userPannel.jsp" />
+
 <form method="post" action="signup">
 
     <fieldset>

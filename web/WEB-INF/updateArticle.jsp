@@ -11,6 +11,8 @@
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
+<jsp:include page="userPannel.jsp" />
+
 <form method="post" action="articles">
 
     <fieldset>
@@ -18,6 +20,10 @@
 
         <input type="text" id="title" name="title" value="<c:out value="${article.title}"/>" size="20"
                maxlength="60" placeholder="Title"/>
+        <br/>
+
+        <input type="text" id="price" name="price" value="<c:out value="${article.price}"/>" size="20"
+               maxlength="60" placeholder="Price"/>
         <br/>
 
         <textarea name="content" id="content" rows="5" placeholder="Content">

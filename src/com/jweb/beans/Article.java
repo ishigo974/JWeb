@@ -6,6 +6,7 @@ package com.jweb.beans;
 public class Article {
     private String title;
     private String content;
+    private String price;
     private int id;
 
     public String getTitle() {
@@ -27,4 +28,8 @@ public class Article {
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
+    public String getPrice() { return price; }
+
+    public void setPrice(String price) { this.price = price; }
 }

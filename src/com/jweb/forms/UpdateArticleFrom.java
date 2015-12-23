@@ -11,17 +11,20 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class UpdateArticleFrom {
     private static final String article_title = "title";
+    private static final String article_price = "price";
     private static final String article_content = "content";
     private static final String article_id = "id";
 
     public Article UpdateArticle(HttpServletRequest request) {
         String title = getValue(request, article_title);
+        String price = getValue(request, article_price);
         String content = getValue(request, article_content);
         int id = Integer.parseInt(getValue(request, article_id));
 
         Article article = new Article();
         article.setContent(content);
         article.setTitle(title);
+        article.setPrice(price);
         article.setId(id);
         try {
             ArticleDao db = new ArticleDao();

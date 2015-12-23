@@ -11,6 +11,8 @@
 <body>
 <%@ include file="beginFoundation.jsp" %>
 
+<jsp:include page="userPannel.jsp" />
+
 <form method="post" action="users">
     <c:if test="${!empty form.result}">
         <span style="top:10px;" class="${empty form.errors ? 'success' : 'alert'} button expand disabled">${form.result}</span>

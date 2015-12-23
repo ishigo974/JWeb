@@ -36,7 +36,7 @@ public class ArticleDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT title, content, id FROM articles WHERE id = '" + id + "';" );
+            result = statement.executeQuery( "SELECT title, price, content, id FROM articles WHERE id = '" + id + "';" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -46,6 +46,7 @@ public class ArticleDao {
             if (!result.first())
                 throw new DBErrors("Can not get the news");
             article.setTitle(result.getString("title"));
+            article.setPrice(result.getString("price"));
             article.setContent(result.getString("content"));
             article.setId(result.getInt("id"));
         } catch (SQLException e) {
@@ -63,7 +64,7 @@ public class ArticleDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT title, content, id FROM articles;" );
+            result = statement.executeQuery( "SELECT title, price, content, id FROM articles;" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -73,6 +74,7 @@ public class ArticleDao {
             while (result.next()) {
                 tmp = new Article();
                 tmp.setTitle(result.getString("title"));
+                tmp.setPrice(result.getString("price"));
                 tmp.setContent(result.getString("content"));
                 tmp.setId(result.getInt("id"));
                 articles.add(tmp);
@@ -91,7 +93,7 @@ public class ArticleDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            statement.executeUpdate("INSERT INTO articles (title, content) VALUES ('" + article.getTitle() + "', '" + article.getContent() + "');");
+            statement.executeUpdate("INSERT INTO articles (title, price, content) VALUES ('" + article.getTitle() + "', '" + article.getPrice() + "', '" + article.getContent() + "');");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -105,7 +107,7 @@ public class ArticleDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            statement.executeUpdate("UPDATE articles SET title = '" + article.getTitle() + "', content = '" + article.getContent() +
+            statement.executeUpdate("UPDATE articles SET title = '" + article.getTitle() + "', price = '" + article.getPrice() + "', content = '" + article.getContent() +
                     "' WHERE id = " + article.getId() + ";");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
