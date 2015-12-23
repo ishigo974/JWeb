@@ -9,6 +9,7 @@ public class User {
     private String password;
     private int id;
     private boolean news;
+    private boolean admin;
 
     public String getEmail() {
         return email;
@@ -41,4 +42,8 @@ public class User {
     public boolean isNews() { return news; }
 
     public void setNews(boolean news) { this.news = news; }
+
+    public boolean isAdmin() { return admin; }
+
+    public void setAdmin(boolean admin) { this.admin = admin; }
 }

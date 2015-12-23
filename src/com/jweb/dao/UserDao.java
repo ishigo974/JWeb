@@ -37,7 +37,7 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, name FROM users WHERE email = '" + email + "';" );
+            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, admin, name FROM users WHERE email = '" + email + "';" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -50,6 +50,7 @@ public class UserDao {
             user.setName(result.getString("name"));
             user.setPassword(result.getString("pswd"));
             user.setNews(result.getBoolean("newsletter"));
+            user.setAdmin(result.getBoolean("admin"));
             user.setId(result.getInt("id"));
         } catch (SQLException e) {
             throw new DBErrors("Can not log in");
@@ -66,7 +67,7 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, name FROM users WHERE id = '" + String.valueOf(id) + "';" );
+            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, admin, name FROM users WHERE id = '" + String.valueOf(id) + "';" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -78,6 +79,7 @@ public class UserDao {
             user.setEmail(result.getString("email"));
             user.setName(result.getString("name"));
             user.setNews(result.getBoolean("newsletter"));
+            user.setAdmin(result.getBoolean("admin"));
             user.setId(result.getInt("id"));
         } catch (SQLException e) {
             throw new DBErrors("Can not log in");
@@ -94,7 +96,7 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            result = statement.executeQuery( "SELECT email, name, newsletter, id FROM users;" );
+            result = statement.executeQuery( "SELECT email, name, newsletter, admin, id FROM users;" );
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -106,6 +108,7 @@ public class UserDao {
                 tmp.setEmail(result.getString("email"));
                 tmp.setName(result.getString("name"));
                 tmp.setNews(result.getBoolean("newsletter"));
+                tmp.setAdmin(result.getBoolean("admin"));
                 tmp.setId(result.getInt("id"));
                 users.add(tmp);
             }
@@ -123,8 +126,8 @@ public class UserDao {
             throw new DBErrors(e.getMessage());
         }
         try {
-            statement.executeUpdate("INSERT INTO users (email, pswd, name, newsletter) VALUES ('" + user.getEmail() + "', '" + user.getPassword() +
-                                    "', '" + user.getName() + "', '" + (user.isNews() ? 1 : 0) + "');");
+            statement.executeUpdate("INSERT INTO users (email, pswd, name, newsletter, admin) VALUES ('" + user.getEmail() + "', '" + user.getPassword() +
+                                    "', '" + user.getName() + "', '" + (user.isNews() ? 1 : 0) + "', '0');");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -139,7 +142,7 @@ public class UserDao {
         }
         try {
             statement.executeUpdate("UPDATE users SET email = '" + user.getEmail() + "', pswd = '" + user.getPassword() + "', name = '" + user.getName() +
-                                    "', newsletter = '" + (user.isNews() ? 1 : 0) + "' WHERE id = " + user.getId() + ";");
+                                    "', newsletter = '" + (user.isNews() ? 1 : 0) + "', admin = '" + (user.isAdmin() ? 1 : 0) + "' WHERE id = " + user.getId() + ";");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }

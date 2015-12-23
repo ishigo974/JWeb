@@ -48,8 +48,14 @@
         </c:if>
         <br/>
 
+        <label for="news">News Letter</label>
         <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
                placeholder="News Letter" <c:if test="${user.news == true}">checked</c:if>/>
+        <br/>
+
+        <label for="admin">Admin</label>
+        <input type="checkbox" id="admin" name="admin" value="admin" size="20" maxlength="20"
+               placeholder="Admin" <c:if test="${user.admin == true}">checked</c:if>/>
         <br/>
 
         <input type="hidden" name="id" value="<c:out value="${user.id}"/>">

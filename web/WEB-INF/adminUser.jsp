@@ -14,7 +14,7 @@
 
     <jsp:include page="adminPannel.jsp" />
 
-    <table class="large-10 large-push-1 small-12 columns" style="padding: 0px; border: 0;">
+    <table class="large-12 small-12 columns" style="padding: 0px; border: 0;">
         <tr>
             <td class="large-2 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Username
@@ -24,6 +24,9 @@
             </td>
             <td class="large-2 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 News Letter
+            </td>
+            <td class="large-2 columns text-center button midnight" style="margin:0" data-equalizer-watch>
+                Admin
             </td>
             <td class="large-2 columns text-center button midnight" style="margin:0" data-equalizer-watch>
                 Edit
@@ -37,6 +40,7 @@
                 <td class="small-3 columns text-center"><c:out value="${u.name}"/></td>
                 <td class="small-3 columns text-center"><c:out value="${u.email}"/></td>
                 <td class="small-3 columns text-center"><c:out value="${u.news}"/></td>
+                <td class="small-3 columns text-center"><c:out value="${u.admin}"/></td>
                 <td class="small-3 columns text-center"><a href="/admin/users?id=<c:out value="${u.id}"/>">Edit</a></td>
                 <td class="small-3 columns text-center"><a href="/admin/users/delete?id=<c:out value="${u.id}"/>">Delete</a></td>
             </tr>

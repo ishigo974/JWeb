@@ -45,6 +45,7 @@
         </c:if>
         <br/>
 
+        <label for="news">News Letter</label>
         <input type="checkbox" id="news" name="news" value="checked" size="20" maxlength="20"
                placeholder="News Letter"/>
         <br/>

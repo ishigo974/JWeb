@@ -17,6 +17,7 @@ public final class UpdateUserForm {
     private static final String confirmation_input = "confirmation";
     private static final String user_name = "name";
     private static final String user_news = "news";
+    private static final String user_admin = "admin";
     private static final String user_id = "id";
 
     private String result;
@@ -44,10 +45,16 @@ public final class UpdateUserForm {
             newsLetter = getValue(request, user_news).equals("checked");
         else
             newsLetter = false;
+        boolean admin;
+        if (getValue(request, user_admin) != null)
+            admin = getValue(request, user_admin).equals("admin");
+        else
+            admin = false;
         int id = Integer.parseInt(getValue(request, user_id));
 
         User user = new User();
         user.setNews(newsLetter);
+        user.setAdmin(admin);
         user.setId(id);
         try {
             email_validator(email);
