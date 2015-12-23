@@ -13,7 +13,7 @@
 
 <jsp:include page="userPannel.jsp" />
 
-<form method="post" action="articles">
+<form method="post" action="articles" enctype="multipart/form-data">
 
     <fieldset>
         <legend>Edit</legend>
@@ -24,6 +24,9 @@
 
         <input type="text" id="price" name="price" value="<c:out value="${article.price}"/>" size="20"
                maxlength="60" placeholder="Price"/>
+        <br/>
+
+        <input type="file" id="image" name="image" />
         <br/>
 
         <textarea name="content" id="content" rows="5" placeholder="Content">

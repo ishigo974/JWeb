@@ -20,9 +20,8 @@ public class addArticleServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         addArticleForm form = new addArticleForm();
-        form.addArticle(request);
         Part part = request.getPart("image");
-        String imageFolder = this.getServletConfig().getInitParameter("imageFolder");
+        String imageFolder = getServletContext().getRealPath("/").split("out")[0] + this.getServletConfig().getInitParameter("imageFolder");
 
         String fileName = getFileName(part);
         if (fileName != null && !fileName.isEmpty()) {
@@ -31,9 +30,11 @@ public class addArticleServlet extends HttpServlet {
             date.getTime();
             fileName = date.getTime() + fileName;
             saveFile(part, fileName, imageFolder);
+            form.addArticle(request, fileName);
         }
-
-        response.sendRedirect(getServletContext().getRealPath("/"));
+        else
+            form.addArticle(request, "");
+        response.sendRedirect("/admin/articles");
     }
 
     private static String getFileName(Part part) {

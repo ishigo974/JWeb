@@ -7,6 +7,7 @@ public class Article {
     private String title;
     private String content;
     private String price;
+    private String img;
     private int id;
 
     public String getTitle() {
@@ -32,4 +33,8 @@ public class Article {
     public String getPrice() { return price; }
 
     public void setPrice(String price) { this.price = price; }
+
+    public String getImg() { return img; }
+
+    public void setImg(String img) { this.img = img; }
 }

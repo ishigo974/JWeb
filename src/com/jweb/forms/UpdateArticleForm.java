@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by lopes_n on 12/23/15.
  */
-public class UpdateArticleFrom {
+public class UpdateArticleForm {
     private static final String article_title = "title";
     private static final String article_price = "price";
     private static final String article_content = "content";
     private static final String article_id = "id";
 
-    public Article UpdateArticle(HttpServletRequest request) {
+    public Article UpdateArticle(HttpServletRequest request, String img) {
         String title = getValue(request, article_title);
         String price = getValue(request, article_price);
         String content = getValue(request, article_content);
@@ -25,6 +25,7 @@ public class UpdateArticleFrom {
         article.setContent(content);
         article.setTitle(title);
         article.setPrice(price);
+        article.setImg(img);
         article.setId(id);
         try {
             ArticleDao db = new ArticleDao();

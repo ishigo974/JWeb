@@ -15,7 +15,7 @@ public class addArticleForm {
     private static final String article_content = "content";
     private static final String article_price = "price";
 
-    public Article addArticle(HttpServletRequest request) {
+    public Article addArticle(HttpServletRequest request, String img) {
         String title = getValue(request, article_title);
         String price = getValue(request, article_price);
         String content = getValue(request, article_content);
@@ -24,6 +24,7 @@ public class addArticleForm {
         article.setContent(content);
         article.setTitle(title);
         article.setPrice(price);
+        article.setImg(img);
         try {
             ArticleDao db = new ArticleDao();
             db.setArticle(article);
