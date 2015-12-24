@@ -10,7 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendMailTLS {
+public class Mailer {
 
 	public static void send(String dest, String subject, String text) {
 

@@ -1,7 +1,7 @@
 package com.jweb.dao;
 
-import com.jweb.mails.SendMailTLS;
 import com.jweb.beans.User;
+import com.jweb.mails.Mailer;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import java.security.MessageDigest;
@@ -92,7 +92,7 @@ public class UserDao {
         return user;
     }
 
-    public LinkedList<User> getUsers() throws DBErrors{
+    public LinkedList<User> getUsers() throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
         try {
@@ -129,13 +129,10 @@ public class UserDao {
             statement.setBoolean(4, user.isNews());
             statement.executeUpdate();
 
-            try {
-                SendMailTLS.send("maxime.menigoz@gmail.com", "Test", "This is a test.");
-            }
-            catch (Exception e)
-            {
-                System.out.print(e.getMessage());
-            }
+            Mailer.send(user.getEmail(), "Bienvenue !", "Bonjour " + user.getName() +
+                    ",\n\nBienvenue sur notre plateforme de news et d'articles JWeb." +
+                    "\nVotre inscription a été réussie.\n\n" +
+                    "Cordialement,\nMaxime Menigoz et Kevin Lopes");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
