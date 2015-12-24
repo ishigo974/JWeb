@@ -19,7 +19,6 @@ public class SignupServlet extends HttpServlet {
         request.setAttribute("form", form);
         request.setAttribute("user", user);
         response.sendRedirect("/");
-//        this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
