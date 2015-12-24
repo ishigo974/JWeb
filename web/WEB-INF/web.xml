@@ -136,6 +136,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>viewArticlesServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.viewArticleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewArticlesServlet</servlet-name>
+        <url-pattern>/article/view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>com.jweb.servlet.logoutServlet</servlet-class>
     </servlet>

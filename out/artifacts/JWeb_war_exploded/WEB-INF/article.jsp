@@ -21,7 +21,7 @@
 
 <c:forEach var="article" items="${articles}">
     <ul class="pricing-table">
-        <li class="title"><c:out value="${article.title}"/></li>
+        <a href="/article/view?id=<c:out value="${article.id}"/>"><li class="title"><c:out value="${article.title}"/></li></a>
         <li class="price">$<c:out value="${article.price}"/></li>
         <li class="description"><c:out value="${article.content}"/></li>
         <li class="bullet-item"><img src="/assets/files/<c:out value="${article.img}"/>"/></li>
