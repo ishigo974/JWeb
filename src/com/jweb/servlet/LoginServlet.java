@@ -1,5 +1,6 @@
 package com.jweb.servlet;
 
+import com.jweb.beans.Article;
 import com.jweb.beans.User;
 import com.jweb.forms.LoginForm;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 /**
  * Created by menigo_m on 16/12/15.
@@ -17,6 +19,7 @@ import java.sql.SQLException;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginForm form = new LoginForm();
+        LinkedList <Article> cart = new LinkedList<Article>();
         User user = null;
         user = form.loginUser(request);
         request.setAttribute("form", form);
@@ -24,8 +27,10 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         if (form.getErrors().isEmpty()) {
             session.setAttribute("userSession", user);
+            session.setAttribute("userCart", cart);
         } else {
             session.setAttribute("userSession", null);
+            session.setAttribute("userCart", null);
         }
         response.sendRedirect("/");
     }

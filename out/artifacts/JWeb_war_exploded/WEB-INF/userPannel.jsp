@@ -17,6 +17,9 @@
     <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right show-for-large-up">
+            <c:if test="${!empty sessionScope.userSession}">
+                <li><a href="/article/add">${sessionScope.userCart.size()}<img style="height: 40px;" src="/assets/cart.png"></a></li>
+            </c:if>
             <li class="active"><a href="/article">Products</a></li>
             <li class="has-dropdown not-click">
                 <a href="#">Menu</a>

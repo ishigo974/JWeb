@@ -25,7 +25,9 @@
         <li class="price">$<c:out value="${article.price}"/></li>
         <li class="description"><c:out value="${article.content}"/></li>
         <li class="bullet-item"><img src="/assets/files/<c:out value="${article.img}"/>"/></li>
-        <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+        <c:if test="${!empty sessionScope.userSession}">
+            <li class="cta-button"><a class="button" href="/article/add?id=<c:out value="${article.id}"/>">Buy Now</a></li>
+        </c:if>
     </ul>
 </c:forEach>
 

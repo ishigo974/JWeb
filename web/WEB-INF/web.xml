@@ -162,6 +162,15 @@
         <url-pattern>/article</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>cartServlet</servlet-name>
+        <servlet-class>com.jweb.servlet.cartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cartServlet</servlet-name>
+        <url-pattern>/article/add</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>AdminFilter</filter-name>
         <filter-class>com.jweb.filters.adminFilter</filter-class>
