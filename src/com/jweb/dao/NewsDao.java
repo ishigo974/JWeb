@@ -29,15 +29,12 @@ public class NewsDao {
     }
 
     public News getNews(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT title, content, id FROM news WHERE id = '" + id + "';" );
+            statement = bdd.prepareStatement("SELECT title, content, id FROM news WHERE id = ?;");
+            statement.setInt(1, id);
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -56,15 +53,11 @@ public class NewsDao {
     }
 
     public LinkedList<News> getNews() throws DBErrors{
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT title, content, id FROM news;" );
+            statement = bdd.prepareStatement("SELECT title, content, id FROM news;");
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -85,43 +78,36 @@ public class NewsDao {
     }
 
     public void setNews(News news) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("INSERT INTO news (title, content) VALUES ('" + news.getTitle() + "', '" + news.getContent() + "');");
+            statement = bdd.prepareStatement("INSERT INTO news (title, content) VALUES (?, ?);");
+            statement.setString(1, news.getTitle());
+            statement.setString(2, news.getContent());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void updateNews(News simpleNew) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("UPDATE news SET title = '" + simpleNew.getTitle() + "', content = '" + simpleNew.getContent() +
-                                    "' WHERE id = " + simpleNew.getId() + ";");
+            statement = bdd.prepareStatement("UPDATE news SET title = ?, content = ? WHERE id = ?;");
+            statement.setString(1, simpleNew.getTitle());
+            statement.setString(2, simpleNew.getContent());
+            statement.setInt(3, simpleNew.getId());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void deleteNews(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("DELETE FROM news WHERE id = " + id + ";");
+            statement = bdd.prepareStatement("DELETE FROM news WHERE id = ?;");
+            statement.setInt(1, id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }

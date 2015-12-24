@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS news (
   id int(11) NOT NULL AUTO_INCREMENT,
   title varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   content varchar(900) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS users (
   id int(10) NOT NULL AUTO_INCREMENT,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS users (
   name varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   newsletter tinyint(1) NOT NULL,
   admin tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 REPLACE INTO news (id, title, content) VALUES
 (1, 'First news', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae tempus libero. Suspendisse luctus elementum ipsum at ultricies. Aliquam tristique lacinia commodo. Quisque vehicula, dui rutrum malesuada malesuada, mauris sem porta ipsum, ut imperdiet quam lectus semper ex. Integer in dolor orci. Integer fringilla massa mauris, eget luctus risus fringilla at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam viverra turpis purus, et volutpat arcu fringilla in.'),
