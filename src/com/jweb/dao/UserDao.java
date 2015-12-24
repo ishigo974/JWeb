@@ -1,5 +1,6 @@
 package com.jweb.dao;
 
+import com.jweb.mails.SendMailTLS;
 import com.jweb.beans.User;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
@@ -7,7 +8,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * Created by lopes_n on 12/17/15.
@@ -128,6 +128,14 @@ public class UserDao {
             statement.setString(3, user.getName());
             statement.setBoolean(4, user.isNews());
             statement.executeUpdate();
+
+            try {
+                SendMailTLS.send("maxime.menigoz@gmail.com", "Test", "This is a test.");
+            }
+            catch (Exception e)
+            {
+                System.out.print(e.getMessage());
+            }
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
