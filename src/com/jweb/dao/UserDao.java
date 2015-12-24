@@ -2,8 +2,12 @@ package com.jweb.dao;
 
 import com.jweb.beans.User;
 
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * Created by lopes_n on 12/17/15.
@@ -41,7 +45,14 @@ public class UserDao {
         User user;
         try {
             user = new User();
-            if (!result.first() || !result.getString("pswd").equals(password))
+            MessageDigest md5 = null;
+            try {
+                md5 = MessageDigest.getInstance("MD5");
+            } catch (NoSuchAlgorithmException e) {
+                throw new SQLException();
+            }
+            user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
+            if (!result.first() || !result.getString("pswd").equals((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes()))))
                 throw new DBErrors("Can not log in");
             user.setEmail(result.getString("email"));
             user.setName(result.getString("name"));

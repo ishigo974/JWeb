@@ -5,6 +5,9 @@ import com.jweb.dao.DBErrors;
 import com.jweb.dao.UserDao;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +71,13 @@ public final class UpdateUserForm {
             setError(password_input, e.getMessage());
             setError(confirmation_input, e.getMessage());
         }
-        user.setPassword(password);
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            setError("Encryption", e.getMessage());
+        }
+        user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
         try {
             name_validator(userName);
         } catch (Exception e) {

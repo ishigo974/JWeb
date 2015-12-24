@@ -36,8 +36,8 @@ REPLACE INTO news (id, title, content) VALUES
 (2, 'Second news', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vitae tempus libero. Suspendisse luctus elementum ipsum at ultricies. Aliquam tristique lacinia commodo. Quisque vehicula, dui rutrum malesuada malesuada, mauris sem porta ipsum, ut imperdiet quam lectus semper ex. Integer in dolor orci. Integer fringilla massa mauris, eget luctus risus fringilla at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam viverra turpis purus, et volutpat arcu fringilla in.');
 
 REPLACE INTO users (id, email, pswd, name, newsletter, admin) VALUES
-(1, 'admin@jweb.com', 'admin', 'admin', 1, 1),
-(2, 'user@jweb.com', 'user', 'user', 1, 0)
+(1, 'admin@jweb.com', UCASE(MD5('admin')), 'admin', 1, 1),
+(2, 'user@jweb.com', UCASE(MD5('user')), 'user', 1, 0)
 EOF
 
 echo "Seed database done"
