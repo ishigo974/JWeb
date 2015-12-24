@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS news (
 CREATE TABLE IF NOT EXISTS users (
   id int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (id),
-  email varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  email varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL UNIQUE,
   pswd varchar(250) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   name varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   newsletter tinyint(1) NOT NULL,
