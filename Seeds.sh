@@ -2,6 +2,7 @@
 
 echo "Creaing database with seeds"
 mysql -u root -p <<EOF
+
 CREATE DATABASE IF NOT EXISTS lopes_n;
 use lopes_n;
 
@@ -29,6 +30,14 @@ CREATE TABLE IF NOT EXISTS users (
   name varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   newsletter tinyint(1) NOT NULL,
   admin tinyint(1) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS comments (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id),
+    name varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    content varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+    article int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 REPLACE INTO news (id, title, content) VALUES
