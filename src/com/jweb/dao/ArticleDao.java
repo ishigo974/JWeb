@@ -28,15 +28,12 @@ public class ArticleDao {
     }
 
     public Article getArticle(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT title, price, content, img, id FROM articles WHERE id = '" + id + "';" );
+            statement = bdd.prepareStatement("SELECT title, price, content, img, id FROM articles WHERE id = ?;");
+            statement.setInt(1, id);
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -57,15 +54,11 @@ public class ArticleDao {
     }
 
     public LinkedList<Article> getArticles() throws DBErrors{
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT title, price, content, img, id FROM articles;" );
+            statement = bdd.prepareStatement("SELECT title, price, content, img, id FROM articles;");
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -88,48 +81,49 @@ public class ArticleDao {
     }
 
     public void setArticle(Article article) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("INSERT INTO articles (title, price, content, img) VALUES ('" + article.getTitle() + "', '" +
-                                    article.getPrice() + "', '" + article.getContent() + "', '" + article.getImg() + "');");
+            statement = bdd.prepareStatement("INSERT INTO articles (title, price, content, img) VALUES (?, ?, ?, ?);");
+            statement.setString(1, article.getTitle());
+            statement.setString(2, article.getPrice());
+            statement.setString(3, article.getContent());
+            statement.setString(4, article.getImg());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void updateArticle(Article article) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            if (article.getImg().isEmpty())
-                statement.executeUpdate("UPDATE articles SET title = '" + article.getTitle() + "', price = '" + article.getPrice() +
-                                        "', content = '" + article.getContent() + "' WHERE id = " + article.getId() + ";");
-            else
-                statement.executeUpdate("UPDATE articles SET title = '" + article.getTitle() + "', price = '" + article.getPrice() +
-                                        "', content = '" + article.getContent() + "', img = '" + article.getImg() + "' WHERE id = " + article.getId() + ";");
+            if (article.getImg().isEmpty()) {
+                statement = bdd.prepareStatement("UPDATE articles SET title = ?, price = ?, content = ? WHERE id = ?;");
+                statement.setString(1, article.getTitle());
+                statement.setString(2, article.getPrice());
+                statement.setString(3, article.getContent());
+                statement.setInt(4, article.getId());
+            } else
+            {
+                statement = bdd.prepareStatement("UPDATE articles SET title = ?, price = ?, content = ?, img = ? WHERE id = ?;");
+                statement.setString(1, article.getTitle());
+                statement.setString(2, article.getPrice());
+                statement.setString(3, article.getContent());
+                statement.setString(4, article.getImg());
+                statement.setInt(5, article.getId());
+            }
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void deleteArticle(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("DELETE FROM articles WHERE id = " + id + ";");
+            statement = bdd.prepareStatement("DELETE FROM articles WHERE id = ?;");
+            statement.setInt(1, id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
