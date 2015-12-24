@@ -29,15 +29,12 @@ public class UserDao {
     }
 
     public User getUser(String email, String password) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, admin, name FROM users WHERE email = '" + email + "';" );
+            statement = bdd.prepareStatement("SELECT id, email, pswd, newsletter, admin, name FROM users WHERE email = ?;");
+            statement.setString(1, email);
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -59,15 +56,12 @@ public class UserDao {
     }
 
     public User getUser(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT id, email, pswd, newsletter, admin, name FROM users WHERE id = '" + String.valueOf(id) + "';" );
+            statement = bdd.prepareStatement("SELECT id, email, pswd, newsletter, admin, name FROM users WHERE id = ?;");
+            statement.setInt(1, id);
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -88,15 +82,11 @@ public class UserDao {
     }
 
     public LinkedList<User> getUsers() throws DBErrors{
-        Statement statement;
+        PreparedStatement statement;
         ResultSet result;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            result = statement.executeQuery( "SELECT email, name, newsletter, admin, id FROM users;" );
+            statement = bdd.prepareStatement("SELECT email, name, newsletter, admin, id FROM users;");
+            result = statement.executeQuery();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -119,44 +109,41 @@ public class UserDao {
     }
 
     public void setUser(User user) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("INSERT INTO users (email, pswd, name, newsletter, admin) VALUES ('" + user.getEmail() + "', '" + user.getPassword() +
-                                    "', '" + user.getName() + "', '" + (user.isNews() ? 1 : 0) + "', '0');");
+            statement = bdd.prepareStatement("INSERT INTO users (email, pswd, name, newsletter, admin) VALUES (?, ?, ?, ?, '0');");
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getName());
+            statement.setBoolean(4, user.isNews());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void updateUser(User user) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("UPDATE users SET email = '" + user.getEmail() + "', pswd = '" + user.getPassword() + "', name = '" + user.getName() +
-                                    "', newsletter = '" + (user.isNews() ? 1 : 0) + "', admin = '" + (user.isAdmin() ? 1 : 0) + "' WHERE id = " + user.getId() + ";");
+            statement = bdd.prepareStatement("UPDATE users SET email = ?, pswd = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getName());
+            statement.setBoolean(4, user.isNews());
+            statement.setBoolean(5, user.isAdmin());
+            statement.setInt(6, user.getId());
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
     }
 
     public void deleteUser(int id) throws DBErrors {
-        Statement statement;
+        PreparedStatement statement;
         try {
-            statement = bdd.createStatement();
-        } catch (SQLException e) {
-            throw new DBErrors(e.getMessage());
-        }
-        try {
-            statement.executeUpdate("DELETE FROM users WHERE id = " + id + ";");
+            statement = bdd.prepareStatement("DELETE FROM users WHERE id = ?;");
+            statement.setInt(1, id);
+            statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
