@@ -162,13 +162,22 @@ public class UserDao {
     public void updateUser(User user) throws DBErrors {
         PreparedStatement statement;
         try {
-            statement = bdd.prepareStatement("UPDATE users SET email = ?, pswd = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
-            statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getName());
-            statement.setBoolean(4, user.isNews());
-            statement.setBoolean(5, user.isAdmin());
-            statement.setInt(6, user.getId());
+            if (!user.getPassword().isEmpty()) {
+                statement = bdd.prepareStatement("UPDATE users SET email = ?, pswd = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
+                statement.setString(1, user.getEmail());
+                statement.setString(2, user.getPassword());
+                statement.setString(3, user.getName());
+                statement.setBoolean(4, user.isNews());
+                statement.setBoolean(5, user.isAdmin());
+                statement.setInt(6, user.getId());
+            } else {
+                statement = bdd.prepareStatement("UPDATE users SET email = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
+                statement.setString(1, user.getEmail());
+                statement.setString(2, user.getName());
+                statement.setBoolean(3, user.isNews());
+                statement.setBoolean(4, user.isAdmin());
+                statement.setInt(5, user.getId());
+            }
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
