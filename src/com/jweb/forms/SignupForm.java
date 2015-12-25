@@ -67,7 +67,8 @@ public final class SignupForm {
         } catch (NoSuchAlgorithmException e) {
             setError("Encryption", e.getMessage());
         }
-        user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
+        if (md5 != null && password != null)
+            user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
         try {
             name_validator(userName);
         } catch (Exception e) {
@@ -86,6 +87,7 @@ public final class SignupForm {
             result = "You have signed up successfully.";
         } else {
             result = "Sign up failure.";
+            return null;
         }
         return user;
     }
