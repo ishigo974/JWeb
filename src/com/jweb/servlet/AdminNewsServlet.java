@@ -4,6 +4,7 @@ import com.jweb.beans.News;
 import com.jweb.dao.DBErrors;
 import com.jweb.dao.NewsDao;
 import com.jweb.forms.UpdateNewForm;
+import com.jweb.forms.UpdateUserForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,16 @@ import java.util.List;
  */
 public class AdminNewsServlet extends HttpServlet {
 
+    /**
+     * Action executed when doing a get request on admin news link
+     * <p>
+     *     Show the news informations for admins
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         NewsDao bdd = null;
@@ -45,6 +56,17 @@ public class AdminNewsServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Action executed when doing a post request on admin news form
+     * <p>
+     *     Update the information of the news with the current form
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link UpdateNewForm#UpdateNews(HttpServletRequest)}
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UpdateNewForm form = new UpdateNewForm();
         form.UpdateNews(request);

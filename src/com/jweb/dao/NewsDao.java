@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 /**
+ * The object required to access the News object
  * Created by lopes_n on 12/20/15.
  */
 public class NewsDao {
@@ -15,6 +16,10 @@ public class NewsDao {
     private static final String pswd = "kevkev";
     Connection bdd = null;
 
+    /**
+     * Create the connection with the database
+     * @throws DBErrors if the credentials are invalid
+     */
     public NewsDao() throws DBErrors {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -28,6 +33,13 @@ public class NewsDao {
         }
     }
 
+    /**
+     * Get a news by id
+     * @param id int
+     *           The id of the news in database
+     * @return The news with this id
+     * @throws DBErrors if select is invalid
+     */
     public News getNews(int id) throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
@@ -52,6 +64,12 @@ public class NewsDao {
         return news;
     }
 
+    /**
+     * Get all the news
+     * @return LinkedList
+     *         The list of the news in database
+     * @throws DBErrors if select is invalid
+     */
     public LinkedList<News> getNews() throws DBErrors{
         PreparedStatement statement;
         ResultSet result;
@@ -77,6 +95,12 @@ public class NewsDao {
         return news;
     }
 
+    /**
+     * Create a news entry in database
+     * @param news News
+     *             The news object
+     * @throws DBErrors if insert is invalid
+     */
     public void setNews(News news) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -89,6 +113,12 @@ public class NewsDao {
         }
     }
 
+    /**
+     * Update a news in database
+     * @param simpleNew News
+     *                  The new news object
+     * @throws DBErrors if update is invalid
+     */
     public void updateNews(News simpleNew) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -102,6 +132,12 @@ public class NewsDao {
         }
     }
 
+    /**
+     * Delete a news with it's id
+     * @param id int
+     *           The id of the news to delete
+     * @throws DBErrors if delete is invalid
+     */
     public void deleteNews(int id) throws DBErrors {
         PreparedStatement statement;
         try {

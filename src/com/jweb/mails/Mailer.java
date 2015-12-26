@@ -12,6 +12,19 @@ import javax.mail.internet.MimeMessage;
 
 public class Mailer {
 
+	/**
+	 * Action executed when sending a mail
+	 * <p>
+	 *     Send a mail to the receiver with the given subject and the given text
+	 *     This action is done when a new user sign up and when news are added
+	 * </p>
+     * @param dest String
+     *             The receiver of the mail
+     * @param subject String
+     *                The subject (or object) of the mail to send
+     * @param text String
+     *             The content of the mail
+	 */
 	public static void send(String dest, String subject, String text) {
 
 		final String username = "jwebduturfu@gmail.com";

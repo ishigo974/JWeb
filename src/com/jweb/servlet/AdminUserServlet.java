@@ -19,7 +19,16 @@ import java.util.List;
  * Created by menigo_m on 16/12/15.
  */
 public class AdminUserServlet extends HttpServlet {
-
+    /**
+     * Action executed when doing a get request on admin user link
+     * <p>
+     *     Show the users informations for admins
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserDao bdd = null;
@@ -48,6 +57,17 @@ public class AdminUserServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Action executed when doing a post request on admin user form
+     * <p>
+     *     Update the information of the user with the current form
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link UpdateUserForm#UpdateUser(HttpServletRequest)}
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UpdateUserForm form = new UpdateUserForm();
         form.UpdateUser(request);

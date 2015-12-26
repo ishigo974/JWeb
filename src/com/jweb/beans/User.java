@@ -1,6 +1,7 @@
 package com.jweb.beans;
 
 /**
+ * The user object of the database
  * Created by menigo_m on 16/12/15.
  */
 public class User {

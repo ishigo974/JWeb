@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 /**
+ * The object required to access the Article object
  * Created by lopes_n on 12/23/15.
  */
 public class ArticleDao {
@@ -14,6 +15,10 @@ public class ArticleDao {
     private static final String pswd = "kevkev";
     Connection bdd = null;
 
+    /**
+     * Create the connection with the database
+     * @throws DBErrors if the credentials are invalid
+     */
     public ArticleDao() throws DBErrors {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,6 +32,13 @@ public class ArticleDao {
         }
     }
 
+    /**
+     * Get an article by it's id
+     * @param id int
+     *           The id of the article in database
+     * @return The selected article
+     * @throws DBErrors if select is invalid
+     */
     public Article getArticle(int id) throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
@@ -53,6 +65,12 @@ public class ArticleDao {
         return article;
     }
 
+    /**
+     * Get all articles
+     * @return LinkedList
+     *         The list of the articles
+     * @throws DBErrors if select is invalid
+     */
     public LinkedList<Article> getArticles() throws DBErrors{
         PreparedStatement statement;
         ResultSet result;
@@ -80,6 +98,12 @@ public class ArticleDao {
         return articles;
     }
 
+    /**
+     * Create a new article
+     * @param article Article
+     *                The article object
+     * @throws DBErrors if insert is invalid
+     */
     public void setArticle(Article article) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -94,6 +118,12 @@ public class ArticleDao {
         }
     }
 
+    /**
+     * Update an article
+     * @param article Article
+     *                The new article object
+     * @throws DBErrors if update is invalid
+     */
     public void updateArticle(Article article) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -118,6 +148,11 @@ public class ArticleDao {
         }
     }
 
+    /**
+     * Delete a news with it's id
+     * @param id int
+     *           The id of the article
+     */
     public void deleteArticle(int id) throws DBErrors {
         PreparedStatement statement;
         try {

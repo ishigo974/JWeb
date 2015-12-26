@@ -16,6 +16,17 @@ import java.util.List;
  */
 public class articleServlet extends HttpServlet {
 
+    /**
+     * Action executed when doing a get request on articles link
+     * <p>
+     *     Show all the articles
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link ArticleDao#getArticles()}
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ArticleDao bdd;

@@ -13,6 +13,12 @@ public class addNewForm {
     private static final String news_title = "title";
     private static final String news_content = "content";
 
+    /**
+     * Add a news in database
+     * @param request HttpServletRequest
+     *                The request the user sent
+     * @return The created news
+     */
     public News addNews(HttpServletRequest request) {
         String title = getValue(request, news_title);
         String content = getValue(request, news_content);
@@ -29,6 +35,14 @@ public class addNewForm {
         return simpleNew;
     }
 
+    /**
+     * Get the value of a given field in the request
+     * @param request HttpServletRequest
+     *                User's request
+     * @param field String
+     *              The field of which you want the value
+     * @return the value of the form field
+     */
     private static String getValue(HttpServletRequest request, String field) {
         String value = request.getParameter(field);
         if (value == null || value.trim().length() == 0) {

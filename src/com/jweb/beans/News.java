@@ -1,6 +1,7 @@
 package com.jweb.beans;
 
 /**
+ * The news object of the database
  * Created by menigo_m on 15/12/15.
  */
 public class News {

@@ -4,6 +4,7 @@ import com.jweb.beans.Article;
 import com.jweb.dao.ArticleDao;
 import com.jweb.dao.DBErrors;
 import com.jweb.forms.UpdateArticleForm;
+import com.jweb.forms.UpdateUserForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,18 @@ import java.util.List;
  * Created by lopes_n on 12/23/15.
  */
 public class AdminArticleServlet extends HttpServlet {
+
+    /**
+     * Action executed when doing a get request on admin articles link
+     * <p>
+     *     Show the informations of the articles
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link UpdateUserForm#UpdateUser(HttpServletRequest)}
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ArticleDao bdd = null;
@@ -46,6 +59,17 @@ public class AdminArticleServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Action executed when doing a post request on admin articles form
+     * <p>
+     *     Update the information of the article with the current form
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link UpdateArticleForm#UpdateArticle(HttpServletRequest, String)}
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UpdateArticleForm form = new UpdateArticleForm();
         Part part = request.getPart("image");

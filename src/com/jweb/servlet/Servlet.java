@@ -21,6 +21,16 @@ public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
+    /**
+     * Action executed when doing a get request on an index view
+     * <p>
+     *     Show the last news
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         NewsDao bdd;
         List<News> articles = null;

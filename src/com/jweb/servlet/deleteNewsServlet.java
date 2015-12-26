@@ -13,6 +13,17 @@ import java.io.IOException;
  * Created by lopes_n on 12/22/15.
  */
 public class deleteNewsServlet extends HttpServlet {
+    /**
+     * Action executed when doing a get request on delete news link
+     * <p>
+     *     Delete the news selected
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link com.jweb.dao.NewsDao#deleteNews(int)}
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         NewsDao bdd;
         if (request.getParameter("id") != null) {

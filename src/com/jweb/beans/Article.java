@@ -1,6 +1,7 @@
 package com.jweb.beans;
 
 /**
+ * The article object of the database
  * Created by lopes_n on 12/23/15.
  */
 public class Article {

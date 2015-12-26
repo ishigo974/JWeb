@@ -16,6 +16,12 @@ public class UpdateNewForm {
     private static final String news_content = "content";
     private static final String news_id = "id";
 
+    /**
+     * Update a news
+     * @param request HttpServletRequest
+     *                The post request the user sent
+     * @return The updated news
+     */
     public News UpdateNews(HttpServletRequest request) {
         String title = getValue(request, news_title);
         String content = getValue(request, news_content);
@@ -34,6 +40,14 @@ public class UpdateNewForm {
         return simpleNew;
     }
 
+    /**
+     * Get the value of a given field in the request
+     * @param request HttpServletRequest
+     *                User's request
+     * @param field String
+     *              The field of which you want the value
+     * @return the value of the form field
+     */
     private static String getValue(HttpServletRequest request, String field) {
         String value = request.getParameter(field);
         if (value == null || value.trim().length() == 0) {

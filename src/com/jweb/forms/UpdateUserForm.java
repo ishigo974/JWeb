@@ -30,6 +30,13 @@ public final class UpdateUserForm {
         return errors;
     }
 
+    /**
+     * Set an error in the errors map
+     * @param champ String
+     *              The invalid field
+     * @param message String
+     *                The error output
+     */
     private void setError(String champ, String message) {
         errors.put(champ, message);
     }
@@ -38,6 +45,12 @@ public final class UpdateUserForm {
         return result;
     }
 
+    /**
+     * Update a user
+     * @param request HttpServletRequest
+     *                The request the user sent
+     * @return The updated user
+     */
     public User UpdateUser(HttpServletRequest request) {
         String email = getValue(request, email_input);
         String password = getValue(request, password_input);
@@ -100,6 +113,11 @@ public final class UpdateUserForm {
         return user;
     }
 
+    /**
+     * Check if the mail is valid
+     * @param email String
+     *              The mail value
+     */
     private void email_validator(String email) throws Exception {
         if (email != null) {
             if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
@@ -110,6 +128,13 @@ public final class UpdateUserForm {
         }
     }
 
+    /**
+     * Check if the password and confirmation fields are valid
+     * @param password String
+     *                 The password value
+     * @param confirmation String
+     *                     The confirmation value
+     */
     private void password_validator(String password, String confirmation) throws Exception {
         if (password != null && confirmation != null) {
             if (!password.equals(confirmation)) {
@@ -122,12 +147,25 @@ public final class UpdateUserForm {
         }
     }
 
+    /**
+     * Check if the name is at least 3 characters long
+     * @param name String
+     *             The name value
+     */
     private void name_validator(String name) throws Exception {
         if (name == null || name.length() < 3) {
             throw new Exception("Your name must be at least 3 characters long");
         }
     }
 
+    /**
+     * Get the value of a given field in the request
+     * @param request HttpServletRequest
+     *                User's request
+     * @param field String
+     *              The field of which you want the value
+     * @return the value of the form field
+     */
     private static String getValue(HttpServletRequest request, String field) {
         String value = request.getParameter(field);
         if (value == null || value.trim().length() == 0) {

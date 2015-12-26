@@ -1,6 +1,7 @@
 package com.jweb.servlet;
 
 import com.jweb.forms.addArticleForm;
+import com.jweb.forms.addNewForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +15,32 @@ import java.util.Date;
  * Created by lopes_n on 12/23/15.
  */
 public class addArticleServlet extends HttpServlet {
+
+    /**
+     * Action executed when doing a get request on admin add article link
+     * <p>
+     *     Render the add article page
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getServletContext().getRequestDispatcher("/WEB-INF/addArticle.jsp").forward(request, response);
     }
 
+    /**
+     * Action executed when doing a POST request on admin add article form
+     * <p>
+     *     Add an article in database if the informations are valid
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link addArticleForm#addArticle(HttpServletRequest, String)}
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         addArticleForm form = new addArticleForm();
         Part part = request.getPart("image");

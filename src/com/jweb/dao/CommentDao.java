@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 /**
+ * The object required to access the Comment object
  * Created by lopes_n on 12/24/15.
  */
 public class CommentDao {
@@ -15,6 +16,10 @@ public class CommentDao {
     private static final String pswd = "kevkev";
     Connection bdd = null;
 
+    /**
+     * Create the connection with the database
+     * @throws DBErrors if the credentials are invalid
+     */
     public CommentDao() throws DBErrors {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,6 +32,13 @@ public class CommentDao {
             throw new DBErrors(e.getMessage());
         }
     }
+
+    /**
+     * Create a comment
+     * @param comment Comment
+     *                The comment object
+     * @throws DBErrors if insert is invalid
+     */
     public void setComment(Comment comment) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -40,6 +52,14 @@ public class CommentDao {
         }
     }
 
+    /**
+     * Get all the comments of an article
+     * @param article int
+     *                The id of the article of which you want the comments
+     * @return LinkedList
+     *         The list of the comments of the article
+     * @throws DBErrors if select is invalid
+     */
     public LinkedList<Comment> getComments(int article) throws DBErrors{
         PreparedStatement statement;
         ResultSet result;

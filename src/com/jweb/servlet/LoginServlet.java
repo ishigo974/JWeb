@@ -17,6 +17,16 @@ import java.util.LinkedList;
  * Created by menigo_m on 16/12/15.
  */
 public class LoginServlet extends HttpServlet {
+    /**
+     * Action executed when doing a post request on login form
+     * <p>
+     *     Log in the user with the form's informations
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LoginForm form = new LoginForm();
         LinkedList <Article> cart = new LinkedList<Article>();
@@ -35,6 +45,18 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect("/");
     }
 
+    /**
+     * Action executed when doing a get request on an login view
+     * <p>
+     *     Show the login form
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     * {@link com.jweb.dao.UserDao#getUser(int)}
+     * {@link LoginForm#loginUser(HttpServletRequest)}
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }

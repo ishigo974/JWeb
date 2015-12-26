@@ -1,6 +1,7 @@
 package com.jweb.beans;
 
 /**
+ * The comment object of the database
  * Created by lopes_n on 12/24/15.
  */
 public class Comment {

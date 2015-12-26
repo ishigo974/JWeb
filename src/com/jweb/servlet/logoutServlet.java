@@ -11,6 +11,17 @@ import java.io.IOException;
  * Created by lopes_n on 12/23/15.
  */
 public class logoutServlet extends HttpServlet {
+
+    /**
+     * Action executed when doing a get request on the logout view
+     * <p>
+     *     Delete the user session and redirect to home page
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();

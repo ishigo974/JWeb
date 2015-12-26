@@ -15,6 +15,14 @@ public class addCommentForm {
     private static final String comment_content = "content";
     private static final String comment_article = "article";
 
+    /**
+     * Add a comment to the current article in database
+     * @param request HttpServletRequest
+     *                The request the user sent
+     * @param name String
+     *             The name of the user who created the comment
+     * @return The created comment
+     */
     public Comment addComment(HttpServletRequest request, String name) {
         String content = getValue(request, comment_content);
         int article = Integer.parseInt(getValue(request, comment_article));
@@ -32,6 +40,14 @@ public class addCommentForm {
         return comment;
     }
 
+    /**
+     * Get the value of a given field in the request
+     * @param request HttpServletRequest
+     *                User's request
+     * @param field String
+     *              The field of which you want the value
+     * @return the value of the form field
+     */
     private static String getValue(HttpServletRequest request, String field) {
         String value = request.getParameter(field);
         if (value == null || value.trim().length() == 0) {

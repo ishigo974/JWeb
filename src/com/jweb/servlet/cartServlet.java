@@ -16,6 +16,16 @@ import java.util.LinkedList;
  * Created by lopes_n on 12/24/15.
  */
 public class cartServlet extends HttpServlet {
+    /**
+     * Action executed when doing a get request on the cart link
+     * <p>
+     *     Show current user's cart
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Article article;
         ArticleDao bdd;

@@ -16,6 +16,12 @@ public class adminFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {}
 
+    /**
+     * Filter the access to specific views
+     * <p>
+     *     It allows admins to reach the admin page
+     * </p>
+     */
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;

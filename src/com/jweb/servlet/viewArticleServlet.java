@@ -21,6 +21,17 @@ import java.util.List;
  * Created by lopes_n on 12/24/15.
  */
 public class viewArticleServlet extends HttpServlet {
+    /**
+     * Action executed when doing a get request on an article view
+     * <p>
+     *     Show the current article with it's comments
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     *  {@link ArticleDao#getArticle(int)}
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Article article = null;
@@ -48,6 +59,17 @@ public class viewArticleServlet extends HttpServlet {
             response.sendRedirect("/");
     }
 
+    /**
+     * Action executed when doing a post request on an article view
+     * <p>
+     *     Add a comment to the current article
+     * </p>
+     * @param request HttpServletRequest
+     *                The object with the request of the user
+     * @param response HttpServletResponse
+     *                 The response given by the server to the user
+     *  {@link CommentDao#setComment(Comment)}
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (session.getAttribute("userSession") == null)

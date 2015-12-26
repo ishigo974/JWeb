@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.LinkedList;
 
 /**
+ * The object required to access the Article object
  * Created by lopes_n on 12/17/15.
  */
 public class UserDao {
@@ -19,6 +20,10 @@ public class UserDao {
     private static final String pswd = "kevkev";
     Connection bdd = null;
 
+    /**
+     * Create the connection with the database
+     * @throws DBErrors if the credentials are invalid
+     */
     public UserDao() throws DBErrors {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -32,6 +37,15 @@ public class UserDao {
         }
     }
 
+    /**
+     * Get an user
+     * @param email String
+     *              The email of the user
+     * @param password String
+     *                 The password of the user
+     * @return The user if informations are correct
+     * @throws DBErrors if select is invalid
+     */
     public User getUser(String email, String password) throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
@@ -66,6 +80,13 @@ public class UserDao {
         return user;
     }
 
+    /**
+     * Get an user by id
+     * @param id int
+     *           The id of the user in database
+     * @return The user with this id
+     * @throws DBErrors if the select is invalid
+     */
     public User getUser(int id) throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
@@ -92,6 +113,12 @@ public class UserDao {
         return user;
     }
 
+    /**
+     * Get all the users
+     * @return LinkedList
+     *         The list of the users in database
+     * @throws DBErrors if select is invalid
+     */
     public LinkedList<User> getUsers() throws DBErrors {
         PreparedStatement statement;
         ResultSet result;
@@ -119,6 +146,12 @@ public class UserDao {
         return users;
     }
 
+    /**
+     * Create a user entry in database
+     * @param user User
+     *             The user object
+     * @throws DBErrors if insert is invalid
+     */
     public void setUser(User user) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -138,6 +171,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Update an user in database
+     * @param user User
+     *             The new user object
+     * @throws DBErrors if update is invalid
+     */
     public void updateUser(User user) throws DBErrors {
         PreparedStatement statement;
         try {
@@ -154,6 +193,12 @@ public class UserDao {
         }
     }
 
+    /**
+     * Delete a user with it's id
+     * @param id int
+     *           The id of the user to delete
+     * @throws DBErrors if delete is invalid
+     */
     public void deleteUser(int id) throws DBErrors {
         PreparedStatement statement;
         try {

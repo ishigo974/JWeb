@@ -1,0 +1,6 @@
+com.jweb.beans
+com.jweb.dao
+com.jweb.filters
+com.jweb.forms
+com.jweb.mails
+com.jweb.servlet

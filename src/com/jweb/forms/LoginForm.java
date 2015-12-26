@@ -24,6 +24,13 @@ public class LoginForm {
         return errors;
     }
 
+    /**
+     * Set an error in the errors map
+     * @param champ String
+     *              The invalid field
+     * @param message String
+     *                The error output
+     */
     private void setError(String champ, String message) {
         errors.put(champ, message);
     }
@@ -32,6 +39,12 @@ public class LoginForm {
         return result;
     }
 
+    /**
+     * Login the user with the informations given in the form
+     * @param request HttpServletRequest
+     *                The request the user sent
+     * @return The logged in user
+     */
     public User loginUser(HttpServletRequest request) {
         UserDao db;
         try {
@@ -57,6 +70,11 @@ public class LoginForm {
         return user;
     }
 
+    /**
+     * Check if the mail is valid in the database
+     * @param email String
+     *              The mail value
+     */
     private void email_validator(String email) throws Exception {
         if (email != null) {
             if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
@@ -67,12 +85,25 @@ public class LoginForm {
         }
     }
 
+    /**
+     * Check if the password field is valid in the database
+     * @param password String
+     *                 The password value
+     */
     private void password_validator(String password) throws Exception {
         if (password == null || password.length() < 3) {
             throw new Exception("Invalid password");
         }
     }
 
+    /**
+     * Get the value of a given field in the request
+     * @param request HttpServletRequest
+     *                User's request
+     * @param field String
+     *              The field of which you want the value
+     * @return the value of the form field
+     */
     private static String getValue(HttpServletRequest request, String field) {
         String value = request.getParameter(field);
         if (value == null || value.trim().length() == 0) {
