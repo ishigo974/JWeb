@@ -100,10 +100,13 @@ public class addArticleServlet extends HttpServlet {
         }
         } finally {
             try {
-                sortie.close();
+                if (sortie != null) {
+                    sortie.close();
+                }
             } catch ( IOException ignore ) {}
             try {
-                entree.close();
+                if (entree != null)
+                    entree.close();
             } catch ( IOException ignore ) {}
         }
     }
