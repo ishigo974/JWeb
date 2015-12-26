@@ -3,8 +3,8 @@
 echo "Creaing database with seeds"
 mysql -u root -p <<EOF
 
-CREATE DATABASE IF NOT EXISTS lopes_n;
-use lopes_n;
+CREATE DATABASE IF NOT EXISTS jweb_db;
+use jweb_db;
 
 CREATE TABLE IF NOT EXISTS articles (
   id int(11) NOT NULL AUTO_INCREMENT,

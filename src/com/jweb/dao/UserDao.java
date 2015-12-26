@@ -1,7 +1,6 @@
 package com.jweb.dao;
 
 import com.jweb.beans.User;
-import com.jweb.mails.Mailer;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 import java.security.MessageDigest;
@@ -14,10 +13,9 @@ import java.util.LinkedList;
  * Created by lopes_n on 12/17/15.
  */
 public class UserDao {
-
-    private static final String url = "jdbc:mysql://localhost:3306/lopes_n";
-    private static final String user = "root";
-    private static final String pswd = "kevkev";
+    private static final String url = "jdbc:mysql://localhost:3306/jweb_db";
+    private static final String user = "jweb";
+    private static final String pswd = "jweb";
     Connection bdd = null;
 
     /**
@@ -63,8 +61,10 @@ public class UserDao {
             try {
                 md5 = MessageDigest.getInstance("MD5");
             } catch (NoSuchAlgorithmException e) {
-                throw new SQLException();
+                throw new DBErrors("Can not log in");
             }
+            if (password == null)
+                throw new DBErrors("Can not log in");
             user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
             if (!result.first() || !result.getString("pswd").equals((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes()))))
                 throw new DBErrors("Can not log in");
@@ -147,6 +147,37 @@ public class UserDao {
     }
 
     /**
+     * Get the list of users subscribed to the newsletter
+     * @return The list of users subscribed
+     * @throws DBErrors if the select is invalid
+     */
+    public LinkedList<User> getSubscriber() throws DBErrors {
+        PreparedStatement statement;
+        ResultSet result;
+        try {
+            statement = bdd.prepareStatement("SELECT email, name, newsletter, id FROM users WHERE newsletter IS TRUE;");
+            result = statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DBErrors(e.getMessage());
+        }
+        User tmp;
+        LinkedList<User> users = new LinkedList();
+        try {
+            while (result.next()) {
+                tmp = new User();
+                tmp.setEmail(result.getString("email"));
+                tmp.setName(result.getString("name"));
+                tmp.setNews(result.getBoolean("newsletter"));
+                tmp.setId(result.getInt("id"));
+                users.add(tmp);
+            }
+        } catch (SQLException e) {
+            throw new DBErrors("Can not get the users");
+        }
+        return users;
+    }
+
+    /**
      * Create a user entry in database
      * @param user User
      *             The user object
@@ -161,11 +192,6 @@ public class UserDao {
             statement.setString(3, user.getName());
             statement.setBoolean(4, user.isNews());
             statement.executeUpdate();
-
-            Mailer.send(user.getEmail(), "Bienvenue !", "Bonjour " + user.getName() +
-                    ",\n\nBienvenue sur notre plateforme de news et d'articles JWeb." +
-                    "\nVotre inscription a été réussie.\n\n" +
-                    "Cordialement,\nMaxime Menigoz et Kevin Lopes");
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());
         }
@@ -180,13 +206,22 @@ public class UserDao {
     public void updateUser(User user) throws DBErrors {
         PreparedStatement statement;
         try {
-            statement = bdd.prepareStatement("UPDATE users SET email = ?, pswd = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
-            statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getName());
-            statement.setBoolean(4, user.isNews());
-            statement.setBoolean(5, user.isAdmin());
-            statement.setInt(6, user.getId());
+            if (!user.getPassword().isEmpty()) {
+                statement = bdd.prepareStatement("UPDATE users SET email = ?, pswd = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
+                statement.setString(1, user.getEmail());
+                statement.setString(2, user.getPassword());
+                statement.setString(3, user.getName());
+                statement.setBoolean(4, user.isNews());
+                statement.setBoolean(5, user.isAdmin());
+                statement.setInt(6, user.getId());
+            } else {
+                statement = bdd.prepareStatement("UPDATE users SET email = ?, name = ?, newsletter = ?, admin = ? WHERE id = ?;");
+                statement.setString(1, user.getEmail());
+                statement.setString(2, user.getName());
+                statement.setBoolean(3, user.isNews());
+                statement.setBoolean(4, user.isAdmin());
+                statement.setInt(5, user.getId());
+            }
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DBErrors(e.getMessage());

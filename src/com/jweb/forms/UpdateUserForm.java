@@ -90,7 +90,10 @@ public final class UpdateUserForm {
         } catch (NoSuchAlgorithmException e) {
             setError("Encryption", e.getMessage());
         }
-        user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
+        if (md5 != null && password != null) {
+            user.setPassword((new HexBinaryAdapter()).marshal(md5.digest(password.getBytes())));
+        } else
+            user.setPassword("");
         try {
             name_validator(userName);
         } catch (Exception e) {
@@ -142,8 +145,6 @@ public final class UpdateUserForm {
             } else if (password.length() < 3) {
                 throw new Exception("Your password must be at least 3 characters long");
             }
-        } else {
-            throw new Exception("Invalid password");
         }
     }
 

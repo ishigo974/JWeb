@@ -10,9 +10,9 @@ import java.util.LinkedList;
  * Created by lopes_n on 12/23/15.
  */
 public class ArticleDao {
-    private static final String url = "jdbc:mysql://localhost:3306/lopes_n";
-    private static final String user = "root";
-    private static final String pswd = "kevkev";
+    private static final String url = "jdbc:mysql://localhost:3306/jweb_db";
+    private static final String user = "jweb";
+    private static final String pswd = "jweb";
     Connection bdd = null;
 
     /**
