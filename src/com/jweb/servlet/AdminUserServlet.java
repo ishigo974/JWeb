@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The servlet that handles the admin users view
  * Created by menigo_m on 16/12/15.
  */
 public class AdminUserServlet extends HttpServlet {

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The form to sign up
  * Created by menigo_m on 16/12/15.
  */
 public final class SignupForm {

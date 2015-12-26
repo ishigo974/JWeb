@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * The servlet that handles the articles page
  * Created by lopes_n on 12/23/15.
  */
 public class articleServlet extends HttpServlet {

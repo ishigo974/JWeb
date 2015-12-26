@@ -7,6 +7,7 @@ import com.jweb.dao.NewsDao;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * The form to add a news
  * Created by lopes_n on 12/22/15.
  */
 public class addNewForm {

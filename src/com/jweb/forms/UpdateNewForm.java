@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The form to update a news
  * Created by lopes_n on 12/22/15.
  */
 public class UpdateNewForm {

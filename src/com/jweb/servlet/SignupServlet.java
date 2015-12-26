@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * The servlet that handles the signup page
  * Created by menigo_m on 16/12/15.
  */
 public class SignupServlet extends HttpServlet {
@@ -38,8 +39,10 @@ public class SignupServlet extends HttpServlet {
                     "Cordialement,\nMaxime Menigoz et Kevin Lopes");
 
             request.setAttribute("user", user);
+            response.sendRedirect("/");
         }
-        response.sendRedirect("/");
+        else
+            this.getServletContext().getRequestDispatcher("/WEB-INF/signup.jsp").forward(request, response);
     }
 
     /**

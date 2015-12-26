@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * The servlet that handles the article page
  * Created by lopes_n on 12/24/15.
  */
 public class viewArticleServlet extends HttpServlet {

@@ -9,6 +9,7 @@ import com.jweb.dao.DBErrors;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * The form to add a comment on an article
  * Created by lopes_n on 12/24/15.
  */
 public class addCommentForm {

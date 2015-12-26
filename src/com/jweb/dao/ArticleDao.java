@@ -152,6 +152,7 @@ public class ArticleDao {
      * Delete a news with it's id
      * @param id int
      *           The id of the article
+     * @throws DBErrors if the delete is invalid
      */
     public void deleteArticle(int id) throws DBErrors {
         PreparedStatement statement;

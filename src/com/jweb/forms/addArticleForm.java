@@ -8,6 +8,7 @@ import com.jweb.dao.NewsDao;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * The form to add an article
  * Created by lopes_n on 12/23/15.
  */
 public class addArticleForm {

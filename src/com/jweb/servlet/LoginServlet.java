@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**
+ * The servlet that handles the login page
  * Created by menigo_m on 16/12/15.
  */
 public class LoginServlet extends HttpServlet {

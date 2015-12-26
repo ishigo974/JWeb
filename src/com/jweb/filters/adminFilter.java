@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * The filter to admin pages
  * Created by lopes_n on 12/23/15.
  */
-
 public class adminFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {}

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * The servlet that handles the article deletion by admin
  * Created by lopes_n on 12/23/15.
  */
 public class deleteArticleServlet extends HttpServlet {

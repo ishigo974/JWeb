@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * The servlet that handles the logout page
  * Created by lopes_n on 12/23/15.
  */
 public class logoutServlet extends HttpServlet {

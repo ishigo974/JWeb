@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 /**
+ * The servlet that handles the news creation
  * Created by lopes_n on 12/22/15.
  */
 public class addNewsServlet extends HttpServlet {

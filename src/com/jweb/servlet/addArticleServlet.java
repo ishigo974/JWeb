@@ -12,6 +12,7 @@ import java.io.*;
 import java.util.Date;
 
 /**
+ * The servlet that handles the article creation
  * Created by lopes_n on 12/23/15.
  */
 public class addArticleServlet extends HttpServlet {
@@ -60,6 +61,12 @@ public class addArticleServlet extends HttpServlet {
         response.sendRedirect("/admin/articles");
     }
 
+    /**
+     * Get the name of the image given to the article
+     * @param part Part
+     *             Part given
+     * @return The name of the image
+     */
     private static String getFileName(Part part) {
         for (String contentDisposition : part.getHeader("content-disposition").split(";")) {
             if (contentDisposition.trim().startsWith("filename")) {
@@ -69,6 +76,16 @@ public class addArticleServlet extends HttpServlet {
         return null;
     }
 
+    /**
+     * Save the image given
+     * @param part Part
+     *             The part given
+     * @param fileName String
+     *                 The name given to the image
+     * @param imageFolder String
+     *                    The folder where the image is
+     * @throws IOException if errors happen
+     */
     private void saveFile(Part part, String fileName, String imageFolder) throws IOException {
         BufferedInputStream entree = null;
         BufferedOutputStream sortie = null;

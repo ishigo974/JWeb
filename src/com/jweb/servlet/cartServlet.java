@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 /**
+ * The servlet that handles the cart page
  * Created by lopes_n on 12/24/15.
  */
 public class cartServlet extends HttpServlet {

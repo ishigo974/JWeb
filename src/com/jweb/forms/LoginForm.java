@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The form to log in
  * Created by menigo_m on 16/12/15.
  */
 public class LoginForm {

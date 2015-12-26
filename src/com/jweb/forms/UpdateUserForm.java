@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The form to add an user
  * Created by lopes_n on 12/22/15.
  */
 public final class UpdateUserForm {
