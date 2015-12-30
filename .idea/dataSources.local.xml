@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - jweb_db@localhost" uuid="15088276-3472-41cf-aac3-7428bcfc590f">
+      <secret-storage>master_key</secret-storage>
+      <user-name>jweb</user-name>
+      <schema-pattern>lopes_n.*</schema-pattern>
+      <default-schemas>lopes_n.*</default-schemas>
+    </data-source>
+  </component>
+</project>
